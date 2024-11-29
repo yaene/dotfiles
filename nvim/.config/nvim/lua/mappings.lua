@@ -1,19 +1,19 @@
-vim.keymap.set('t','<C-h>', '<C-\\><C-N><C-w>h')
-vim.keymap.set('t','<C-j>', '<C-\\><C-N><C-w>j')
-vim.keymap.set('t','<C-k>', '<C-\\><C-N><C-w>k')
-vim.keymap.set('t','<C-l>', '<C-\\><C-N><C-w>l')
-vim.keymap.set('i','<C-h>', '<C-\\><C-N><C-w>h')
-vim.keymap.set('i','<C-j>', '<C-\\><C-N><C-w>j')
-vim.keymap.set('i','<C-k>', '<C-\\><C-N><C-w>k')
-vim.keymap.set('i','<C-l>', '<C-\\><C-N><C-w>l')
-vim.keymap.set('n','<C-h>', '<C-w>h')
-vim.keymap.set('n','<C-j>', '<C-w>j')
-vim.keymap.set('n','<C-k>', '<C-w>k')
-vim.keymap.set('n','<C-l>', '<C-w>l')
-vim.keymap.set('n','<C-t>', function() vim.cmd([[
+local keymap = vim.keymap
+
+keymap.set('n','<C-t>', function() vim.cmd([[
   split
   res 10
   terminal
   startinsert
   ]])
 end)
+keymap.set('n','<leader>nh', ':nohl<CR>', {desc = "Clear Search Highlights"})
+
+keymap.set('n','<leader>to', '<cmd>tabnew<CR>', {desc = "Open new tab"})
+keymap.set('n','<leader>tx', '<cmd>tabclose<CR>', {desc = "Close current tab"})
+keymap.set('n','<leader>tn', '<cmd>tabn<CR>', {desc = "Go to next tab"})
+keymap.set('n','<leader>tp', '<cmd>tabp<CR>', {desc = "Go to prev tab"})
+keymap.set('n','<leader>tf', '<cmd>tabnew %<CR>', {desc = "Open current buf in new tab"})
+
+keymap.set('n','<leader>sx', '<cmd>close<CR>', {desc = "Close current window"})
+

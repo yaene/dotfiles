@@ -8,13 +8,11 @@ local M = {
     "saadparwaiz1/cmp_luasnip",
 		"L3MON4D3/LuaSnip",
   }
-  
 }
 M.config = function()
   local cmp = require'cmp'
-
-    cmp.setup({
-      snippet = {
+  cmp.setup({
+    snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
           require('luasnip').lsp_expand(args.body) -- For `luasnip` users.

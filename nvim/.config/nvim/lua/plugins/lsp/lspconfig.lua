@@ -106,14 +106,6 @@ return {
                capabilities = capabilities,
             })
          end,
-         ["neocmake"] = function()
-            lspconfig["neocmake"].setup({
-               capabilities = capabilities,
-               format = {
-                  enable = true,
-               },
-            })
-         end,
          ["lua_ls"] = function()
             -- configure lua server (with special settings)
             lspconfig["lua_ls"].setup({

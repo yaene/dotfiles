@@ -43,6 +43,7 @@ return {
             "clang-format",
             "cpplint",
             "cmakelang",
+            "beautysh",
          },
       })
    end,

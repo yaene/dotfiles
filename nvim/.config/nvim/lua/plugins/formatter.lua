@@ -22,6 +22,11 @@ return {
             async = false,
             timeout_ms = 1000,
          },
+         formatters = {
+            beautysh = {
+               prepend_args = { "-i", "2" },
+            },
+         },
       })
 
       vim.keymap.set({ "n", "v" }, "<leader>mp", function()

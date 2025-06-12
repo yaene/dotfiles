@@ -38,7 +38,6 @@ return {
             "stylua",
             "isort",
             "black",
-            "pylint",
             "eslint_d",
             "clang-format",
             "cpplint",

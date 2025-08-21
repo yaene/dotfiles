@@ -76,6 +76,15 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# select in/around quotes
+autoload -U select-quoted
+zle -N select-quoted
+for m in visual viopp; do
+    for c in {a,i}{\',\",\`}; do
+        bindkey -M $m $c select-quoted
+    done
+done
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment

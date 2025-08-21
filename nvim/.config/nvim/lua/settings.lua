@@ -3,6 +3,7 @@ local column_limit = "80"
 
 local g = vim.g
 local o = vim.o
+local opt = vim.opt
 vim.scriptencoding = "utf-8"
 g.mapleader = " "
 g.netrw_liststyle = 3
@@ -21,6 +22,8 @@ o.softtabstop = space_for_indent
 o.expandtab = true
 o.shiftwidth = space_for_indent
 o.autoindent = true
+o.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- terminal settings
 --

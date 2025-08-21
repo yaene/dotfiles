@@ -22,7 +22,6 @@ o.expandtab = true
 o.shiftwidth = space_for_indent
 o.autoindent = true
 
-
 -- terminal settings
 --
 o.ttyfast = true
@@ -34,6 +33,7 @@ o.splitbelow = true
 
 -- linenumbers and column
 o.number = true
+o.relativenumber = true
 o.cc = column_limit
 o.wrap = false
 
@@ -45,4 +45,3 @@ o.smartcase = true
 o.hlsearch = true
 o.incsearch = true
 o.wildmode = "longest,list"
-

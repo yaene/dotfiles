@@ -1,0 +1,5 @@
+[general]
+import = [
+  "~/.local/share/nvim/lazy/tokyonight.nvim/extras/alacritty/tokyonight_storm.toml",
+]
+live_config_reload = true

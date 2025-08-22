@@ -28,6 +28,7 @@ opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 -- terminal settings
 --
 o.ttyfast = true
+o.termguicolors = true
 
 -- window settings
 --

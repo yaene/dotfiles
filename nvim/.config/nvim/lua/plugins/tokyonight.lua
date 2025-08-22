@@ -1,13 +1,12 @@
 local M = {
-  "folke/tokyonight.nvim",
-  lazy = false,
+   "folke/tokyonight.nvim",
+   lazy = false,
+   priority = 1000,
+   opts = {},
 }
 
 M.config = function()
-  require("tokyonight").setup({
-    terminal_colors = false,
-  })
-  vim.cmd("colorscheme tokyonight-storm")
+   vim.cmd("colorscheme tokyonight-storm")
 end
 
 return M

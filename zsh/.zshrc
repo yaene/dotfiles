@@ -121,7 +121,7 @@ zstyle :prompt:pure:path color 12
 
 # change the color for both `prompt:success` and `prompt:error`
 zstyle ':prompt:pure:prompt:*' color 12
-
+#
 # turn on git stash status
 zstyle :prompt:pure:git:stash show yes
 prompt pure
@@ -131,6 +131,24 @@ bindkey -v
 
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
+
+### Aliases ###
+alias dnf="dnf5"
+
+# TMUX
+alias t="tmux"
+alias tn="tmux new-session -A -s"
+alias tncd="tmux new-session -A -s $(basename $PWD | tr -d .)"
+alias ta="tmux attach"
+alias tas="tmux attach -t"
+alias tl="(tmux list-sessions -F '#{session_name}' 2>/dev/null || echo 'no sessions')"
+alias tk="tmux kill-server"
+taf () {
+  local session=$(tl | fzf)
+  if [[ -n "$session" ]]; then
+    tas $session
+  fi
+}
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

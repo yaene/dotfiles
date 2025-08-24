@@ -116,6 +116,7 @@ return {
          pyright = {},
          clangd = {},
          cmake = {},
+         hyprls = {},
          lua_ls = {
             settings = {
                Lua = {

@@ -5,6 +5,8 @@ local state = {
    },
 }
 
+local floaterm_augroup = vim.api.nvim_create_augroup("floaterm", {})
+
 local function open_floating_window(opts)
    opts = opts or {}
    local buf = opts.buf or vim.api.nvim_create_buf(false, true)
@@ -34,6 +36,15 @@ local function open_floaterm()
       if vim.bo[state.floating.buf].buftype ~= "terminal" then
          vim.cmd.terminal()
       end
+      vim.api.nvim_create_autocmd("WinLeave", {
+         group = floaterm_augroup,
+         buffer = state.floating.buf,
+         callback = function()
+            if vim.api.nvim_win_is_valid(state.floating.win) then
+               vim.api.nvim_win_hide(state.floating.win)
+            end
+         end,
+      })
       vim.cmd("normal i")
    else
       vim.api.nvim_win_hide(state.floating.win)

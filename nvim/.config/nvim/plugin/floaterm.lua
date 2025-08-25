@@ -34,10 +34,10 @@ local function open_floaterm()
       if vim.bo[state.floating.buf].buftype ~= "terminal" then
          vim.cmd.terminal()
       end
+      vim.cmd("normal i")
    else
       vim.api.nvim_win_hide(state.floating.win)
    end
-   vim.cmd("normal i")
 end
 
 -- Create a command and keymap for convenience

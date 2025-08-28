@@ -114,6 +114,8 @@ fi
 
 
 # Pure Theme
+# expecting pure to be installed here
+fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 
 # change the path color

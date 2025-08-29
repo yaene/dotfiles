@@ -1,0 +1,9 @@
+[PreviewSettings]
+EnableRemoteFolderThumbnail=false
+MaximumRemoteSize=0
+
+[UiSettings]
+ColorScheme=qt6ct
+
+[Icons]
+Theme=Tela-purple

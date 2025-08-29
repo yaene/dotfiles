@@ -37,6 +37,7 @@ return {
             "query",
             "vimdoc",
             "c",
+            "qmljs",
          },
          incremental_selection = {
             enable = true,

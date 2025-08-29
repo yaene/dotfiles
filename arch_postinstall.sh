@@ -69,3 +69,4 @@ passwd $NEW_USER
 echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/00-wheel-sudo
 chmod 440 /etc/sudoers.d/00-wheel-sudo
 
+

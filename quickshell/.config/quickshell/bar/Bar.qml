@@ -1,6 +1,7 @@
 import Quickshell // for PanelWindow
 import Quickshell.Io
 import QtQuick
+import QtQuick.Layouts
 import qs.common
 
 Scope {
@@ -17,10 +18,19 @@ Scope {
             }
             color: "transparent"
 
-            implicitHeight: 30
+            implicitHeight: Config.bar.height
 
-            Clock {
-                anchors.centerIn: parent
+            RowLayout {
+                anchors.fill: parent
+                BarLeft {
+                    Clock {}
+                }
+                BarCenter {
+                    Clock {}
+                }
+                BarRight {
+                    Clock {}
+                }
             }
         }
     }

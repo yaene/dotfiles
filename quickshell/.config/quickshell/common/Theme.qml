@@ -16,7 +16,16 @@ Singleton {
         onFileChanged: reload()
         JsonAdapter {
             id: configJsonAdapter
-            property string font: "Adwaita"
+            property JsonObject font: JsonObject {
+                property JsonObject family: JsonObject {
+                    property string primary: "Adwaita"
+                }
+                property JsonObject size: JsonObject {
+                    property int small: 15
+                    property int medium: 16
+                    property int large: 22
+                }
+            }
             property JsonObject colors: JsonObject {
 
                 // Backgrounds

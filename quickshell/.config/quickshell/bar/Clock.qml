@@ -2,13 +2,18 @@ import QtQuick
 import Quickshell
 import qs.common
 
-Text {
-    color: Theme.colors.text
-    text: {
-        Qt.formatDateTime(clock.date, "hh:mm");
-    }
-    SystemClock {
-        id: clock
-        precision: SystemClock.Minutes
+BarItem {
+    Text {
+        color: hovered ? Theme.colors.background : Theme.colors.text
+        text: {
+            Qt.formatDateTime(clock.date, "hh:mm");
+        }
+        font {
+            pixelSize: Theme.font.size.medium
+        }
+        SystemClock {
+            id: clock
+            precision: SystemClock.Minutes
+        }
     }
 }

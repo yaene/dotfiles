@@ -3,6 +3,7 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 import qs.common
+import "widgets"
 
 Scope {
     id: root
@@ -20,18 +21,13 @@ Scope {
 
             implicitHeight: Config.bar.height
 
-            RowLayout {
-                anchors.fill: parent
-                BarLeft {
-                    Clock {}
-                }
-                BarCenter {
-                    Clock {}
-                }
-                BarRight {
-                    Clock {}
-                }
+            BarLeft {
+                Workspaces {}
             }
+            BarCenter {
+                Clock {}
+            }
+            BarRight {}
         }
     }
 }

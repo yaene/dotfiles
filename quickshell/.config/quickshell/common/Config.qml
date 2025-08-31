@@ -8,7 +8,6 @@ import QtCore
 Singleton {
     readonly property string file: StandardPaths.locate(StandardPaths.ConfigLocation, "jing/config.json")
     property alias bar: configJsonAdapter.bar
-
     FileView {
         path: Utils.urlStripProtocol(Config.file)
         watchChanges: true

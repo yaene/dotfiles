@@ -9,6 +9,7 @@ Singleton {
     readonly property string file: StandardPaths.locate(StandardPaths.ConfigLocation, "jing/theme.json")
     property alias font: configJsonAdapter.font
     property alias colors: configJsonAdapter.colors
+    property alias iconFont: configJsonAdapter.iconFont
 
     FileView {
         path: Utils.urlStripProtocol(Theme.file)
@@ -16,11 +17,14 @@ Singleton {
         onFileChanged: reload()
         JsonAdapter {
             id: configJsonAdapter
+            property string iconFont: "/home/yaene/.icons/Tela-circle-purple"
             property JsonObject font: JsonObject {
                 property JsonObject family: JsonObject {
                     property string primary: "Adwaita"
+                    property string nerd: "0xProto Nerd Font"
                 }
                 property JsonObject size: JsonObject {
+                    property int smaller: 13
                     property int small: 15
                     property int medium: 16
                     property int large: 22

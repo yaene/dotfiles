@@ -27,7 +27,9 @@ Scope {
             BarCenter {
                 Clock {}
             }
-            BarRight {}
+            BarRight {
+                Battery {}
+            }
         }
     }
 }

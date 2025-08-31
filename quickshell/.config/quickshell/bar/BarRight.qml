@@ -4,10 +4,9 @@ import qs.common
 
 RowLayout {
     id: right
-    spacing: 4
+    spacing: 8
     layoutDirection: Qt.RightToLeft
     anchors {
-        left: center.right
         right: parent.right
     }
     default property alias content: right.children

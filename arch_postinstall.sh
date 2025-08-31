@@ -38,6 +38,8 @@ core_utils=(
       nwg-look # gtk settings editor
       kvantum # qt theming engine
       qt6ct # qt configuration
+      bluez # bluetooth
+      bluez-utils
 )
 
 pacman -S "${core_utils[@]}"

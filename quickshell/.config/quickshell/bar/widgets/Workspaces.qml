@@ -22,7 +22,7 @@ BarItem {
                 Text {
                     property HyprlandWorkspace workspace: workspaceBox.modelData
                     anchors.centerIn: parent
-                    color: workspace.active ? Theme.colors.background : Theme.colors.text
+                    color: workspace.active || hovered ? Theme.colors.background : Theme.colors.text
                     text: workspace.id
                     font {
                         pixelSize: Theme.font.size.medium

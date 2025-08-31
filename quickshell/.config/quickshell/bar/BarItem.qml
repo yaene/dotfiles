@@ -8,7 +8,7 @@ Item {
     property real padding: 5
     property bool hovered: mouseArea.containsMouse
 
-    implicitWidth: contentItem.implicitWidth + 2 * padding
+    implicitWidth: contentItem.implicitWidth
     implicitHeight: Config.bar.height
     default property alias content: contentItem.children
 
@@ -16,7 +16,6 @@ Item {
         id: bg
         anchors.fill: parent
         color: hovered ? Theme.colors.text : "transparent"
-        radius: barItem.radius
     }
 
     MouseArea {
@@ -32,7 +31,6 @@ Item {
             verticalCenter: parent.verticalCenter
             left: parent.left
             right: parent.right
-            margins: barItem.padding
         }
     }
 }

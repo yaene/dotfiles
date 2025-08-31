@@ -27,7 +27,7 @@ Singleton {
                     property int smaller: 13
                     property int small: 15
                     property int medium: 16
-                    property int large: 22
+                    property int large: 20
                 }
             }
             property JsonObject colors: JsonObject {

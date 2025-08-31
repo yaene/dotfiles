@@ -40,7 +40,7 @@ BarItem {
         text: iconFromBatteryPercentage(percentText.percentage, powerDevice.state)
         color: hovered ? Theme.colors.background : Theme.colors.text
         font {
-            pixelSize: Theme.font.size.medium
+            pixelSize: Theme.font.size.large
             family: Theme.font.family.nerd
         }
     }

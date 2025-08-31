@@ -34,7 +34,12 @@ Scope {
                 }
                 Item {
                     anchors.fill: parent
-                    anchors.margins: borderRect.border.width
+                    anchors {
+                        topMargin: borderRect.border.width
+                        bottomMargin: borderRect.border.width
+                        leftMargin: borderRect.border.width + 8
+                        rightMargin: borderRect.border.width + 8
+                    }
                     BarLeft {
                         id: left
                         Workspaces {}
@@ -46,6 +51,7 @@ Scope {
                     BarRight {
                         id: right
                         Battery {}
+                        Bluetooth {}
                     }
                 }
             }

@@ -9,20 +9,26 @@ BarItem {
     readonly property UPowerDevice powerDevice: UPower.displayDevice
 
     function iconFromBatteryPercentage(percentage, battery_state) {
-        const charging = battery_state === UPowerDeviceState.Charging;
-        let iconstr = charging ? "󱐋" : "";
+        let status = " ";
+        let battery = "";
+
         if (percentage <= 10) {
-            iconstr += charging ? "" : "";
+            battery = "";
+            status = "";
         } else if (percentage <= 35) {
-            iconstr += "";
+            battery = "";
         } else if (percentage <= 60) {
-            iconstr += "";
+            battery = "";
         } else if (percentage <= 85) {
-            iconstr += "";
+            battery = "";
         } else {
-            iconstr += "";
+            battery = "";
         }
-        return iconstr;
+        if (battery_state === UPowerDeviceState.Charging) {
+            status = "󱐋";
+        }
+
+        return battery + " " + status;
     }
 
     visible: powerDevice.isLaptopBattery

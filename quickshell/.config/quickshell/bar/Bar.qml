@@ -17,18 +17,37 @@ Scope {
                 left: true
                 right: true
             }
-            color: "transparent"
 
-            implicitHeight: Config.bar.height
+            color: Config.bar.transparent ? "transparent" : Theme.colors.background
 
-            BarLeft {
-                Workspaces {}
-            }
-            BarCenter {
-                Clock {}
-            }
-            BarRight {
-                Battery {}
+            implicitHeight: Config.bar.height + 2 * borderRect.border.width
+
+            Rectangle {
+                id: borderRect
+                color: "transparent"
+                anchors.centerIn: parent
+                anchors.fill: parent
+                radius: 8
+                border {
+                    color: Theme.colors.text
+                    width: Config.bar.borderWidth
+                }
+                Item {
+                    anchors.fill: parent
+                    anchors.margins: borderRect.border.width
+                    BarLeft {
+                        id: left
+                        Workspaces {}
+                    }
+                    BarCenter {
+                        id: center
+                        Clock {}
+                    }
+                    BarRight {
+                        id: right
+                        Battery {}
+                    }
+                }
             }
         }
     }

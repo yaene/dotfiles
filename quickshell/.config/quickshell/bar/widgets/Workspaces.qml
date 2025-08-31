@@ -9,7 +9,6 @@ BarItem {
     RowLayout {
         id: workspaceIndicator
         readonly property list<HyprlandWorkspace> workspaces: Hyprland.workspaces.values
-        spacing: 4
 
         Repeater {
             model: workspaceIndicator.workspaces
@@ -17,7 +16,7 @@ BarItem {
                 id: workspaceBox
                 required property HyprlandWorkspace modelData
                 implicitWidth: 10
-                color: modelData.active ? Theme.colors.text : Theme.colors.background
+                color: modelData.active ? Theme.colors.text : "transparent"
                 Layout.fillHeight: true
 
                 Text {

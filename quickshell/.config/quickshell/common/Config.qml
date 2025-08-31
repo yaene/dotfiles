@@ -16,6 +16,8 @@ Singleton {
             id: configJsonAdapter
             property JsonObject bar: JsonObject {
                 property int height: 30
+                property bool transparent: true
+                property int borderWidth: 2
             }
         }
     }

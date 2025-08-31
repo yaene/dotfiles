@@ -15,11 +15,8 @@ Item {
     Rectangle {
         id: bg
         anchors.fill: parent
-        color: hovered ? Theme.colors.text : Theme.colors.background
+        color: hovered ? Theme.colors.text : "transparent"
         radius: barItem.radius
-        border {
-            color: Theme.colors.text
-        }
     }
 
     MouseArea {

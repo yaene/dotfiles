@@ -1,14 +1,14 @@
 import QtQuick
 import QtQuick.Layouts
+import qs.common
 
 RowLayout {
     id: right
     spacing: 4
+    layoutDirection: Qt.RightToLeft
     anchors {
+        left: center.right
         right: parent.right
-        top: parent.top
-        bottom: parent.bottom
     }
-    Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
     default property alias content: right.children
 }

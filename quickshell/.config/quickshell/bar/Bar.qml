@@ -52,6 +52,7 @@ Scope {
                         id: right
                         Battery {}
                         Bluetooth {}
+                        Network {}
                     }
                 }
             }

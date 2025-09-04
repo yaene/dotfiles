@@ -49,6 +49,8 @@ Scope {
 
                         Workspaces {
                         }
+                        Submap {
+                        }
                     }
                     BarCenter {
                         id: center

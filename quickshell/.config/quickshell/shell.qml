@@ -8,4 +8,6 @@ ShellRoot {
     }
     BrightnessOSD {
     }
+    VolumeOSD {
+    }
 }

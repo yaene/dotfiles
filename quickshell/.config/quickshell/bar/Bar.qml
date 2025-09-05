@@ -4,6 +4,7 @@ import QtQuick
 import QtQuick.Layouts
 import qs.common
 import "widgets"
+import "widgets/network"
 
 Scope {
     id: root

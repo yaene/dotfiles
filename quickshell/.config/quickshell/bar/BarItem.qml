@@ -4,33 +4,40 @@ import qs.common
 
 Item {
     id: barItem
-    property real radius: 8
-    property real padding: 5
-    property bool hovered: mouseArea.containsMouse
 
-    implicitWidth: contentItem.implicitWidth
-    implicitHeight: Config.bar.height
     default property alias content: contentItem.children
+    property bool hovered: mouseArea.containsMouse
+    property real padding: 5
+    property real radius: 8
+
+    signal pressed
+
+    implicitHeight: Config.bar.height
+    implicitWidth: contentItem.implicitWidth
 
     Rectangle {
         id: bg
+
         anchors.fill: parent
         color: hovered ? Theme.colors.text : "transparent"
     }
-
     MouseArea {
         id: mouseArea
+
         anchors.fill: parent
         hoverEnabled: true
-    }
 
+        onPressed: parent.pressed()
+    }
     RowLayout {
         id: contentItem
+
         anchors.fill: parent
+
         anchors {
-            verticalCenter: parent.verticalCenter
             left: parent.left
             right: parent.right
+            verticalCenter: parent.verticalCenter
         }
     }
 }

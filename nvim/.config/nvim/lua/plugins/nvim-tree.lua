@@ -20,6 +20,12 @@ return {
          }
       end
 
+      local on_attach = function(bufnr)
+         local api = require("nvim-tree.api")
+         api.config.mappings.default_on_attach(bufnr)
+         vim.keymap.set("n", "<Esc>", api.tree.close, { buffer = bufnr })
+      end
+
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
       nvimtree.setup({
@@ -33,6 +39,7 @@ return {
             },
          },
 
+         on_attach = on_attach,
          -- change folder arrow icons
          renderer = {
             indent_markers = {

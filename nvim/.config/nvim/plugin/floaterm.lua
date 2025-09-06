@@ -45,6 +45,7 @@ local function open_floaterm()
             end
          end,
       })
+      vim.keymap.set("t", "<C-d>", open_floaterm, { buffer = state.floating.buf })
       vim.cmd("normal i")
    else
       vim.api.nvim_win_hide(state.floating.win)

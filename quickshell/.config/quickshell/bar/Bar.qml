@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import qs.common
 import "widgets"
 import "widgets/network"
+import "widgets/bluetooth"
 
 Scope {
     id: root

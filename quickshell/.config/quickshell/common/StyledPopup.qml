@@ -10,6 +10,7 @@ PanelWindow {
 
     color: "transparent"
     focusable: true
+    visible: false
 
     anchors {
         bottom: true

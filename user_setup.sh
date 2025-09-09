@@ -62,4 +62,11 @@ rm -rf Kvantum-Tokyo-Night
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 
 
+###########################
+######## Ssh keyring ######
+###########################
+systemctl --user enable gcr-ssh-agent.socket
+systemctl --user start gcr-ssh-agent.socket
+
+
 

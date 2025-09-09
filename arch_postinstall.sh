@@ -40,6 +40,10 @@ core_utils=(
       qt6ct # qt configuration
       bluez # bluetooth
       bluez-utils
+      qt5-wayland
+      qt6-wayland
+      gcr-4
+      gnome-keyring
 )
 
 pacman -S "${core_utils[@]}"

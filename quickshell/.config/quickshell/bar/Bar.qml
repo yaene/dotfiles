@@ -14,11 +14,17 @@ Scope {
         model: Quickshell.screens
 
         PanelWindow {
+            id: barWindow
+
             required property var modelData
 
             color: Config.bar.transparent ? "transparent" : Theme.colors.background
             implicitHeight: Config.bar.height + 2 * borderRect.border.width
             screen: modelData
+
+            Component.onCompleted: {
+                Globals.barWindow = barWindow;
+            }
 
             anchors {
                 left: true

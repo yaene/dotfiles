@@ -55,6 +55,6 @@ Item {
         description: "Open simple bluetooth connection widget"
         name: "openBluetoothConnection"
 
-        onPressed: bluetoothCtlLoader.item.visible = true
+        onPressed: bluetoothCtlLoader.item.show()
     }
 }

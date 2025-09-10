@@ -11,7 +11,7 @@ ListView {
     anchors.margins: 18
     clip: true
     focus: true
-    highlightMoveDuration: 2
+    highlightMoveDuration: 1
     implicitHeight: list.contentHeight + (list.headerItem?.height || 0)
     keyNavigationWraps: true
     spacing: 10

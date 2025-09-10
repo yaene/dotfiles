@@ -11,23 +11,16 @@ import "."
 StyledPopup {
     id: spotifyWidget
 
-    property Component currentComponent: CurrentlyPlaying
+    property Item currentComponent: currentlyPlaying
     readonly property MprisPlayer player: Mpris.players.values.find(player => player.identity === "Spotify")
 
     function setCurrentPage(page) {
-        spotifyWidget.child.visible = false;
-        spotifyWidget.child = page;
-        spotifyWidget.child.visible = true;
+        currentComponent.visible = false;
+        currentComponent = page;
+        currentComponent.visible = true;
     }
 
-    child: currentlyPlaying
-
-    onVisibleChanged: {
-        if (visible) {
-            setCurrentPage(currentlyPlaying);
-            child.forceActiveFocus();
-        }
-    }
+    child: content
 
     SpotifyApi {
         id: api
@@ -37,16 +30,24 @@ StyledPopup {
 
         Component.onCompleted: api.init()
     }
-    CurrentlyPlaying {
-        id: currentlyPlaying
+    Item {
+        id: content
 
-        player: spotifyWidget.player
-    }
-    Playlists {
-        id: playlists
+        implicitHeight: currentComponent.implicitHeight
+        implicitWidth: currentComponent.implicitWidth
 
-        api: api
-        visible: false
+        CurrentlyPlaying {
+            id: currentlyPlaying
+
+            player: spotifyWidget.player
+            visible: true
+        }
+        Playlists {
+            id: playlists
+
+            api: api
+            visible: false
+        }
     }
     Shortcut {
         sequences: ["Ctrl+C"]
@@ -66,6 +67,9 @@ StyledPopup {
         description: "Open the Spotify Widget"
         name: "spotifyWidgetOpen"
 
-        onPressed: spotifyWidget.visible = true
+        onPressed: {
+            spotifyWidget.setCurrentPage(currentlyPlaying);
+            spotifyWidget.show();
+        }
     }
 }

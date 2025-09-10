@@ -39,6 +39,8 @@ Item {
         description: "Open simple network selection widget"
         name: "openNetworkSelection"
 
-        onPressed: networkCtlLoader.item.visible = true
+        onPressed: {
+            networkCtlLoader.item.show();
+        }
     }
 }

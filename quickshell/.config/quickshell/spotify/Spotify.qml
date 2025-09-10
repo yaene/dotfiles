@@ -29,6 +29,11 @@ StyledPopup {
         scope: ["user-read-playback-state", "user-modify-playback-state", "playlist-read-private", "user-library-read"]
 
         Component.onCompleted: api.init()
+        onAuthorizedChanged: {
+            if (authorized) {
+                api.updateCurrentUser();
+            }
+        }
     }
     Item {
         id: content

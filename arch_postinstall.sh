@@ -44,6 +44,9 @@ core_utils=(
       qt6-wayland
       gcr-4
       gnome-keyring
+      pipewire-audio
+      pipewire-alsa
+      pipewire-pulse
 )
 
 pacman -S "${core_utils[@]}"

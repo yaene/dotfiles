@@ -8,7 +8,7 @@
 ############################
 git clone https://github.com/yaene/dotfiles.git 
 cd dotfiles
-stow tmux nvim zsh hyprland mako waybar rofi alacritty fontconfig
+stow tmux nvim zsh hyprland rofi foot fontconfig jing spotify
 
 # default hyprland monitor config (change if needed)
 echo "monitor = , preferred, auto, auto" > ~/.config/hypr/display-setup.conf

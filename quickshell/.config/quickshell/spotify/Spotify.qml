@@ -15,12 +15,18 @@ StyledPopup {
     readonly property MprisPlayer player: Mpris.players.values.find(player => player.identity === "Spotify")
 
     function setCurrentPage(page) {
-        currentComponent.visible = false;
-        currentComponent = page;
-        currentComponent.visible = true;
+        if (api.authorized) {
+            currentComponent = page;
+        }
     }
 
     child: content
+
+    onVisibleChanged: {
+        if (visible) {
+            spotifyWidget.currentComponent = api.authorized ? currentlyPlaying : login;
+        }
+    }
 
     SpotifyApi {
         id: api
@@ -32,6 +38,9 @@ StyledPopup {
         onAuthorizedChanged: {
             if (authorized) {
                 api.updateCurrentUser();
+                spotifyWidget.setCurrentPage(currentlyPlaying);
+            } else {
+                spotifyWidget.setCurrentPage(login);
             }
         }
     }
@@ -45,13 +54,19 @@ StyledPopup {
             id: currentlyPlaying
 
             player: spotifyWidget.player
-            visible: true
+            visible: spotifyWidget.currentComponent === currentlyPlaying
         }
         Playlists {
             id: playlists
 
             api: api
-            visible: false
+            visible: spotifyWidget.currentComponent === playlists
+        }
+        Login {
+            id: login
+
+            api: api
+            visible: spotifyWidget.currentComponent === login
         }
     }
     Shortcut {
@@ -73,7 +88,6 @@ StyledPopup {
         name: "spotifyWidgetOpen"
 
         onPressed: {
-            spotifyWidget.setCurrentPage(currentlyPlaying);
             spotifyWidget.show();
         }
     }

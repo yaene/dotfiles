@@ -13,15 +13,19 @@ pacman -Syu
 # install some core utilities
 
 core_utils=(
+      amd-ucode # or intel-ucode if on intel cpu
       base-devel # package group with basic tools for compilation
       git
       vim
       neovim
+      foot # terminal
       tmux
       stow # to install the dotfiles
       $PREF_SHELL
       zoxide # an improved cd command
       fzf # fuzzy finding
+      fd # file finding
+      rg # ripgrep
       nodejs
       npm
       go
@@ -54,7 +58,7 @@ pacman -S "${core_utils[@]}"
 # some useful user applications
 pacman -S \
   firefox \
-  dolphin \
+  yazi \
   spotify-launcher
 
 # install hyprland and related tools
@@ -62,8 +66,7 @@ pacman -S \
   hyprland \
   hyprpaper \
   hyprlock \
-  hypridle \
-  waybar
+  hypridle
 
 
 ############################

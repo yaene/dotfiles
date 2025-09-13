@@ -25,7 +25,7 @@ core_utils=(
       zoxide # an improved cd command
       fzf # fuzzy finding
       fd # file finding
-      rg # ripgrep
+      ripgrep
       nodejs
       npm
       go

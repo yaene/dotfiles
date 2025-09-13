@@ -1,6 +1,7 @@
 import Quickshell
 import Quickshell.Wayland
 import QtQuick
+import QtQuick.Effects
 import qs.common
 
 Scope {
@@ -110,6 +111,15 @@ Scope {
                 left: true
                 right: true
                 top: true
+            }
+            RectangularShadow {
+                anchors.fill: container
+                blur: 24
+                cached: true
+                color: "#1a1a1a"
+                offset: Qt.vector2d(0, 8)
+                radius: 18
+                spread: 8
             }
             Rectangle {
                 id: container

@@ -2,6 +2,8 @@ import QtQuick
 import Quickshell
 import Quickshell.Widgets
 import Quickshell.Hyprland
+import QtQuick.Effects
+import QtQuick.Controls
 import "."
 
 PopupWindow {
@@ -19,20 +21,36 @@ PopupWindow {
         grab.active = true;
     }
 
-    anchor.rect.x: anchor.window.width / 2 - width / 2
-    anchor.rect.y: anchor.window.screen.height / 2 - height / 2
     anchor.window: Globals.barWindow
     color: "transparent"
-    implicitHeight: container.implicitHeight
-    implicitWidth: container.implicitWidth
+    implicitHeight: anchor.window.screen.height
+    implicitWidth: anchor.window.screen.width
     visible: false
 
+    RectangularShadow {
+        anchors.fill: container
+        blur: 24
+        cached: true
+        color: "#1a1a1a"
+        offset: Qt.vector2d(0, 8)
+        radius: 8
+        spread: 15
+    }
+    MouseArea {
+        anchors.fill: parent
+
+        onClicked: root.hide()
+    }
+    MouseArea {
+        anchors.fill: container
+    }
     ClippingWrapperRectangle {
         id: container
 
         anchors.centerIn: parent
         color: Theme.colors.background
         radius: 8
+        z: 1
 
         Keys.onPressed: event => {
             if (event.key === Qt.Key_Escape) {

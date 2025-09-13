@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Layouts
 import Quickshell
 import Quickshell.Hyprland
 import qs.common
@@ -6,6 +7,7 @@ import qs.services
 import "../.."
 
 Item {
+    implicitHeight: barItem.implicitHeight
     implicitWidth: barItem.implicitWidth
 
     BarItem {

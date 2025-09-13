@@ -6,6 +6,7 @@ import qs.common
 import "../.."
 
 Item {
+    implicitHeight: barItem.implicitHeight
     implicitWidth: barItem.implicitWidth
 
     BarItem {

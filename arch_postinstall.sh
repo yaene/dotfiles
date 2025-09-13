@@ -48,10 +48,13 @@ core_utils=(
       qt6-wayland
       gcr-4
       gnome-keyring
+      pipewire
+      wireplumber
       pipewire-audio
       pipewire-alsa
       pipewire-pulse
 )
+
 
 pacman -S "${core_utils[@]}"
 
@@ -68,6 +71,18 @@ pacman -S \
   hyprlock \
   hypridle
 
+
+# yay
+git clone https://aur.archlinux.org/yay.git /opt/yay
+cd /opt/yay
+makepkg -si
+cd
+
+# quickshell
+yay -S quickshell
+
+# start some systemd units
+systemctl enable --now bluetooth
 
 ############################
 ####### User Setup #########

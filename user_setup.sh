@@ -8,7 +8,7 @@
 ############################
 git clone https://github.com/yaene/dotfiles.git 
 cd dotfiles
-stow tmux nvim zsh hyprland rofi foot fontconfig jing spotify
+stow tmux nvim zsh hyprland rofi foot fontconfig jing spotify quickshell
 
 # default hyprland monitor config (change if needed)
 echo "monitor = , preferred, auto, auto" > ~/.config/hypr/display-setup.conf
@@ -62,11 +62,17 @@ rm -rf Kvantum-Tokyo-Night
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 
 
-###########################
-######## Ssh keyring ######
-###########################
-systemctl --user enable gcr-ssh-agent.socket
-systemctl --user start gcr-ssh-agent.socket
+######################################
+####### Enabling User Services #######
+######################################
 
+# gnome keyring
+systemctl --user --now enable gnome-keyring-daemon
+# ssh keyring
+systemctl --user --now enable gcr-ssh-agent
+# Pipewire
+systemctl --user --now enable pipewire pipewire-pulse
+
+echo 'export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh' >> ~/.zprofile
 
 

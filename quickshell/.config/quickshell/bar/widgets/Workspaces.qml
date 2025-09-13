@@ -18,17 +18,19 @@ BarItem {
                 id: workspaceBox
 
                 readonly property bool active: {
-                    return modelData.active && Hyprland.monitorFor(screen).id === modelData.monitor.id;
+                    return modelData.active && onCurrentMonitor;
                 }
                 readonly property bool focused: {
-                    return modelData.focused && Hyprland.monitorFor(screen).id === modelData.monitor.id;
+                    return modelData.focused && onCurrentMonitor;
                 }
                 required property HyprlandWorkspace modelData
+                readonly property bool onCurrentMonitor: Hyprland.monitorFor(screen).id === modelData.monitor.id
                 readonly property ShellScreen screen: QsWindow.window.screen
 
                 Layout.fillHeight: true
                 color: focused ? Theme.colors.warning : active ? Theme.colors.text : "transparent"
                 implicitWidth: 20
+                visible: onCurrentMonitor
 
                 Text {
                     property HyprlandWorkspace workspace: workspaceBox.modelData

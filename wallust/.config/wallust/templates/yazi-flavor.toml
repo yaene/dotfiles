@@ -1,0 +1,127 @@
+# vim:fileencoding=utf-8:foldmethod=marker
+# : Manager 
+[mgr]
+cwd = { fg = "{{color4}}" }
+# Hovered
+hovered         = { reversed = true }
+preview_hovered = { underline = true }
+# Find
+find_keyword  = { fg = "{{color1}}", bold = true, italic = true, underline = true }
+find_position = { fg = "{{color5}}", bg = "reset", bold = true, italic = true }
+# Marker
+marker_copied   = { fg = "{{color2}}", bg = "{{color2}}" }
+marker_cut      = { fg = "{{color3}}", bg = "{{color1}}" }
+marker_marked   = { fg = "{{color4}}", bg = "{{color6}}" }
+marker_selected = { fg = "{{color3}}", bg = "{{color3}}" }
+# Count
+count_copied   = { fg = "{{color0}}", bg = "{{color2}}" }
+count_cut      = { fg = "{{color0}}", bg = "{{color3}}" }
+count_selected = { fg = "{{color0}}", bg = "{{color4}}" }
+# Border
+border_symbol = "│"
+border_style  = { fg = "{{color8}}" }
+# : 
+# : Tabs 
+[tabs]
+active   = { fg = "{{color7}}", bg = "{{color4}}", bold = true }
+inactive = { fg = "{{color4}}", bg = "{{color7}}" }
+# : 
+# : Mode 
+[mode]
+normal_main = { fg = "{{color7}}", bg = "{{color4}}", bold = true }
+normal_alt  = { fg = "{{color4}}", bg = "{{color7}}" }
+# Select mode
+select_main = { fg = "{{color7}}", bg = "{{color2}}", bold = true }
+select_alt  = { fg = "{{color4}}", bg = "{{color7}}" }
+# Unset mode
+unset_main = { fg = "{{color7}}", bg = "{{color5}}", bold = true }
+unset_alt  = { fg = "{{color4}}", bg = "{{color7}}" }
+# : 
+# : Status bar 
+[status]
+overall = { fg = "{{color4}}" }
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+# Progress
+progress_label = { fg = "{{color7}}", bold = true }
+progress_normal = { fg = "{{color4}}", bg = "{{color7}}" }
+progress_error = { fg = "{{color1}}", bg = "{{color7}}" }
+# Permissions
+perm_sep   = { fg = "{{color4}}" }
+perm_type  = { fg = "{{color2}}" }
+perm_read  = { fg = "{{color3}}" }
+perm_write = { fg = "{{color1}}" }
+perm_exec  = { fg = "{{color5}}" }
+# : 
+# : Pick 
+[pick]
+border = { fg = "{{color4}}" }
+active = { fg = "{{color5}}", bold = true }
+inactive = {}
+# : 
+# : Input 
+[input]
+border   = { fg = "{{color4}}" }
+title    = {}
+value    = {}
+selected = { reversed = true }
+# : 
+# : Completion 
+[cmp]
+border = { fg = "{{color4}}" }
+# : 
+# : Tasks 
+[tasks]
+border  = { fg = "{{color4}}" }
+title   = {}
+hovered = { fg = "{{color5}}", underline = true }
+# : 
+# : Which 
+[which]
+mask            = { bg = "{{color8}}" }
+cand            = { fg = "{{color2}}" }
+rest            = { fg = "{{color15}}" }
+desc            = { fg = "{{color5}}" }
+separator       = "  "
+separator_style = { fg = "{{color9}}" }
+# : 
+# : Help 
+[help]
+on      = { fg = "{{color2}}" }
+run     = { fg = "{{color5}}" }
+hovered = { reversed = true, bold = true }
+footer  = { fg = "{{color0}}", bg = "{{color15}}" }
+# : 
+# : Notify 
+[notify]
+title_info  = { fg = "{{color2}}" }
+title_warn  = { fg = "{{color1}}" }
+title_error = { fg = "{{color3}}" }
+# : 
+# : File-specific styles 
+[filetype]
+rules = [
+	# Images
+	{ mime = "image/*", fg = "{{color3}}" },
+	# Media
+	{ mime = "video/*", fg = "{{color1}}" },
+	{ mime = "audio/*", fg = "{{color1}}" },
+	# Archives
+	{ mime = "application/zip",             fg = "{{color5}}" },
+	{ mime = "application/x-tar",           fg = "{{color5}}" },
+	{ mime = "application/x-bzip*",         fg = "{{color5}}" },
+	{ mime = "application/x-bzip2",         fg = "{{color5}}" },
+	{ mime = "application/x-7z-compressed", fg = "{{color5}}" },
+	{ mime = "application/x-rar",           fg = "{{color5}}" },
+	{ mime = "application/x-xz",            fg = "{{color5}}" },
+	# Documents
+	{ mime = "application/doc",        fg = "{{color2}}" },
+	{ mime = "application/epub+zip",   fg = "{{color2}}" },
+	{ mime = "application/pdf",        fg = "{{color2}}" },
+	{ mime = "application/rtf",        fg = "{{color2}}" },
+	{ mime = "application/vnd.*",      fg = "{{color2}}" },
+	# Fallback
+	{ name = "*", fg = "{{color15}}" },
+	{ name = "*/", fg = "{{color4}}" }
+]
+# : 

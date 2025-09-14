@@ -78,8 +78,8 @@ hovered = { fg = "{{color5}}", underline = true }
 # : 
 # : Which 
 [which]
-mask            = { bg = "{{color8}}" }
-cand            = { fg = "{{color2}}" }
+mask            = { bg = "{{background | lighten(0.1)}}" }
+cand            = { fg = "{{color12}}" }
 rest            = { fg = "{{color15}}" }
 desc            = { fg = "{{color5}}" }
 separator       = "  "

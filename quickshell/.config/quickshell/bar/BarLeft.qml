@@ -7,7 +7,7 @@ RowLayout {
 
     default property alias content: left.children
 
-    spacing: 15
+    spacing: 3
 
     anchors {
         left: parent.left

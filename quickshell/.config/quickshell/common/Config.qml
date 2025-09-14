@@ -20,9 +20,10 @@ Singleton {
             id: configJsonAdapter
 
             property JsonObject bar: JsonObject {
-                property int borderWidth: 2
+                property bool borderOnlyBottom: true
+                property int borderWidth: 0
                 property int height: 30
-                property bool transparent: true
+                property bool transparent: false
             }
             property JsonObject osd: JsonObject {
                 property int hideTimeout: 800

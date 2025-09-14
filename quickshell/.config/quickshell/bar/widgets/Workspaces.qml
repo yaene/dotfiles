@@ -24,8 +24,8 @@ BarItem {
                     return modelData.focused && onCurrentMonitor;
                 }
                 required property HyprlandWorkspace modelData
-                readonly property bool onCurrentMonitor: Hyprland.monitorFor(screen).id === modelData.monitor.id
-                readonly property ShellScreen screen: QsWindow.window.screen
+                readonly property bool onCurrentMonitor: screen.name === modelData.monitor.name
+                readonly property var screen: QsWindow.window?.screen
 
                 Layout.fillHeight: true
                 color: focused ? Theme.colors.warning : active ? Theme.colors.text : "transparent"

@@ -2,6 +2,7 @@ import Quickshell // for PanelWindow
 import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Effects
 import qs.common
 import "widgets"
 import "widgets/network"
@@ -18,7 +19,7 @@ Scope {
 
             required property var modelData
 
-            color: Config.bar.transparent ? "transparent" : Theme.colors.background
+            color: Config.bar.transparent ? "transparent" : Theme.colors.backgroundDarker
             implicitHeight: Config.bar.height + 2 * borderRect.border.width
             screen: modelData
 
@@ -34,47 +35,66 @@ Scope {
             Rectangle {
                 id: borderRect
 
-                anchors.centerIn: parent
-                anchors.fill: parent
                 color: "transparent"
+                implicitHeight: Config.bar.borderOnlyBottom ? 2 * Config.bar.borderWidth : Config.bar.height
                 radius: 8
 
+                anchors {
+                    bottom: parent.bottom
+                    left: parent.left
+                    right: parent.right
+                }
                 border {
                     color: Theme.colors.text
                     width: Config.bar.borderWidth
                 }
-                Item {
-                    anchors.fill: parent
+            }
+            RectangularShadow {
+                blur: 30
+                color: "#33000000"
+                height: 20
+                offset: Qt.vector2d(0, 8)
+                radius: borderRect.radius
+                spread: 0
+                z: 10
 
-                    anchors {
-                        bottomMargin: borderRect.border.width
-                        leftMargin: borderRect.border.width + 8
-                        rightMargin: borderRect.border.width + 8
-                        topMargin: borderRect.border.width
+                anchors {
+                    bottom: parent.bottom
+                    left: parent.left
+                    right: parent.right
+                }
+            }
+            Item {
+                anchors.fill: parent
+
+                anchors {
+                    bottomMargin: borderRect.border.width
+                    leftMargin: borderRect.border.width + 8
+                    rightMargin: borderRect.border.width + 8
+                    topMargin: borderRect.border.width
+                }
+                BarLeft {
+                    id: left
+
+                    Workspaces {
                     }
-                    BarLeft {
-                        id: left
-
-                        Workspaces {
-                        }
-                        Submap {
-                        }
+                    Submap {
                     }
-                    BarCenter {
-                        id: center
+                }
+                BarCenter {
+                    id: center
 
-                        Clock {
-                        }
+                    Clock {
                     }
-                    BarRight {
-                        id: right
+                }
+                BarRight {
+                    id: right
 
-                        Battery {
-                        }
-                        Bluetooth {
-                        }
-                        Network {
-                        }
+                    Battery {
+                    }
+                    Bluetooth {
+                    }
+                    Network {
                     }
                 }
             }

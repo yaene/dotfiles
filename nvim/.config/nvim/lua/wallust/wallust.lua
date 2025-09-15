@@ -25,3 +25,13 @@ local telescope_groups = {
    TelescopeResultsComment = { fg = c.color2 },
 }
 apply_hl(telescope_groups)
+
+local which_key_groups = {
+   WhichKey = { fg = c.color14 },
+   WhichKeyGroup = { fg = c.color6 },
+   WhichKeyDesc = { fg = c.color7 },
+   WhichKeySeparator = { fg = c.color8 },
+   WhichKeyNormal = { bg = c.backgroundLighter },
+   WhichKeyValue = { fg = c.color6 },
+}
+apply_hl(which_key_groups)

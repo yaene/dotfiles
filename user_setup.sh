@@ -46,6 +46,9 @@ mkdir -p ~/.themes
 tar -xvzf Gtk_TokyoNight.tar.gz -C ~/.themes
 rm Gtk_TokyoNight.tar.gz
 
+sudo pacman -S --needed bash grep sed bc glib2 gdk-pixbuf2 sassc gtk-engine-murrine gtk-engines librsvg
+git clone https://github.com/themix-project/oomox-gtk-theme.git ~/.themes/oomox
+
 # install Qt themes
 mkdir -p ~/.config/Kvantum
 git clone https://github.com/0xsch1zo/Kvantum-Tokyo-Night.git

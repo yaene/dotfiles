@@ -50,4 +50,5 @@ yazi = { template = "yazi-flavor.toml", target = "~/.config/yazi/flavors/wallust
 spicetify = { template = "spicetify-color.ini", target = "~/.config/spicetify/Themes/wallust/color.ini" }
 nvim = { template = "nvim.lua", target = "~/.config/nvim/lua/wallust/colors.lua" }
 rofi = { template = "colors.rasi", target = "~/.config/rofi/colors.rasi" }
+gtk = { template = "wallust_gtk_theme.sh", target = "~/.themes/gen_wallust_gtk.sh" }
 

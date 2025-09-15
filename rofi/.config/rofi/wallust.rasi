@@ -1,0 +1,122 @@
+// define colors etc.
+@import "colors.rasi"
+
+* {
+    font: "0xProto Nerd Font Mono 11";
+    border: 0px;
+    transparent: rgba(46,52,64,0);
+    background-color: @bg;
+    foreground: @fg;
+}
+
+// defines different aspects of the window
+window {
+    width: 700;
+    orientation: horizontal;
+    location: center;
+    anchor: center;
+    transparency: "screenshot";
+    border-color: @c12;   
+    border: 3px;
+    border-radius: 6px;
+    spacing: 0;
+    children: [ mainbox ];
+}
+
+mainbox {
+    spacing: 0;
+    children: [ inputbar, message, listview ];
+}
+
+inputbar {
+    color: @fg;
+    padding: 11px;
+    border: 0 0 2px 0;
+    border-color: @c12;
+}
+
+message {
+    padding: 0;
+}
+
+textbox {
+    color: @fg;
+    padding: 10px;
+}
+
+entry, prompt, case-indicator {
+    text-font: inherit;
+    text-color: inherit;
+}
+
+entry {
+    cursor: pointer;
+}
+
+prompt {
+    margin: 0px 5px 0px 0px;
+}
+
+listview {
+    layout: vertical;
+    padding: 8px;
+    lines: 12;
+    columns: 1;
+    dynamic: false;
+}
+
+element {
+    padding: 2px;
+    vertical-align: 1;
+    color: @fg;
+    font: inherit;
+    spacing: 10px;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element selected.normal {
+    color: @bg;
+    background-color: @c3;
+}
+
+element normal active {
+    background-color: @c6;
+    color: @bg;
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element normal urgent {
+    background-color: @c12;
+}
+
+element selected active {
+    background: @c11;
+    foreground: @bg;
+}
+
+button {
+    padding: 6px;
+    color: @c12;
+    horizonatal-align: 0.5;
+
+    border: 2px 0px 2px 2px;
+    border-radius: 4px 0px 0px 4px;
+    border-color: @c12;
+}
+
+button selected normal {
+    border: 2px 0px 2px 2px;
+    border-color: @c12;
+}
+
+scrollbar {
+    enabled: true;
+} 

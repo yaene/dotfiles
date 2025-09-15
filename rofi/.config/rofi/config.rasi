@@ -166,4 +166,4 @@ configuration {
       sorting-method:    "name";
   }
 }
-@theme "tokyonight"
+@theme "wallust"

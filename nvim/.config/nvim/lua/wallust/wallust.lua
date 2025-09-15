@@ -35,3 +35,11 @@ local which_key_groups = {
    WhichKeyValue = { fg = c.color6 },
 }
 apply_hl(which_key_groups)
+
+local trouble_groups = {
+   TroubleText = { fg = c.color7 },
+   TroubleCount = { fg = c.color12, bg = c.color1 },
+   TroubleNormal = { fg = c.fg, bg = c.backgroundLighter },
+}
+-- TODO:
+apply_hl(trouble_groups)

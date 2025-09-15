@@ -12,6 +12,7 @@ local base_groups = {
    FloatBorder = { bg = "none" }, -- Popup borders
    Visual = { bg = c.backgroundLighter },
    CursorLine = { bg = c.backgroundLighter },
+   ColorColumn = { bg = c.color0 },
 }
 apply_hl(base_groups)
 

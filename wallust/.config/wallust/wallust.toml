@@ -51,4 +51,5 @@ spicetify = { template = "spicetify-color.ini", target = "~/.config/spicetify/Th
 nvim = { template = "nvim.lua", target = "~/.config/nvim/lua/wallust/colors.lua" }
 rofi = { template = "colors.rasi", target = "~/.config/rofi/colors.rasi" }
 gtk = { template = "wallust_gtk_theme.sh", target = "~/.themes/gen_wallust_gtk.sh" }
+hypr = { template = "hyprland-colors.conf", target = "~/.config/hypr/colors.conf" }
 

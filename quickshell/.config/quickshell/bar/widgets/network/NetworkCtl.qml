@@ -41,21 +41,14 @@ StyledPopup {
             required property string ssid
             required property string type
 
-            function get_bg_color() {
-                return wifiList.currentIndex === index ? get_border_color() : Theme.colors.background;
-            }
-            function get_border_color() {
-                if (root.failedSSID === ssid) {
-                    return Theme.colors.danger;
-                }
-                return NetworkService.connectedSSID === ssid ? Theme.colors.active : wifiList.currentIndex === index ? Theme.colors.selected : Theme.colors.text;
-            }
-            function get_text_color(col = Theme.colors.text) {
-                return wifiList.currentIndex === index ? Theme.colors.background : col;
+            function get_text_color() {
+                return selected ? Theme.colors.background : Theme.colors.text;
             }
 
+            active: NetworkService.connectedSSID === ssid
             border.color: get_border_color()
             color: get_bg_color()
+            selected: wifiList.currentIndex === index
             width: wifiList.width
 
             Text {
@@ -74,7 +67,7 @@ StyledPopup {
                 text: network.ssid
             }
             Text {
-                color: network.get_text_color(Theme.colors.danger)
+                color: network.get_text_color()
                 font.italic: true
                 font.pixelSize: Theme.font.size.small
                 text: root.connectionError

@@ -4,25 +4,20 @@ import QtQuick.Layouts
 Rectangle {
     id: item
 
+    property bool active: false
+    property color activeColor: Theme.colors.active
+    property color background: Theme.colors.background
     default property alias data: contentRow.data
-    property bool hovered: false
-    property string selectedBackground: Theme.colors.text
-    property string selectedColor: Theme.colors.text
+    property bool selected: false
+    property color selectedColor: Theme.colors.selected
     property int verticalPadding: 20
 
-    border.color: Theme.colors.text
+    border.color: active ? activeColor : selected ? selectedColor : Colors.color8
     border.width: 1
-    color: Theme.colors.background
+    color: selected ? border.color : Theme.colors.background
     implicitHeight: contentRow.implicitHeight + verticalPadding
     radius: 8
 
-    MouseArea {
-        anchors.fill: parent
-        hoverEnabled: true
-
-        onEntered: parent.hovered = true
-        onExited: parent.hovered = false
-    }
     RowLayout {
         id: contentRow
 

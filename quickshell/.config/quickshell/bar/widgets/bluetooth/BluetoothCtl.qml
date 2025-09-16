@@ -33,19 +33,13 @@ StyledPopup {
             required property int index
             required property BluetoothDevice modelData
 
-            function get_bg_color() {
-                return btList.currentIndex === index ? get_border_color() : Theme.colors.background;
-            }
-            function get_border_color() {
-                return modelData.connected ? Theme.colors.active : btList.currentIndex === index ? Theme.colors.selected : Theme.colors.text;
-            }
-            function get_text_color(col = Theme.colors.text) {
-                return btList.currentIndex === index ? Theme.colors.background : col;
+            function get_text_color() {
+                return selected ? Theme.colors.background : Theme.colors.text;
             }
 
-            border.color: get_border_color()
-            color: get_bg_color()
+            active: modelData.connected
             device: modelData
+            selected: btList.currentIndex === index
             textColor: btDevice.get_text_color()
             width: btList.width
         }

@@ -35,6 +35,9 @@ git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 ############################
 ####### Theme Setup ########
 ############################
+# install wallust
+yay -S wallust
+
 # icon theme
 git clone https://github.com/vinceliuice/Tela-icon-theme.git
 ./Tela-icon-theme/install.sh -c purple

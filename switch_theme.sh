@@ -1,15 +1,34 @@
-WALLPAPER=$1
+#!/bin/sh
 
-wallust run "$WALLPAPER" --check-contrast
+# Parse arguments before and after '--'
+script_args=()
+extra_args=()
+found_delim=0
 
-# reapply spice
+for arg in "$@"; do
+    if [ "$found_delim" -eq 0 ]; then
+        if [ "$arg" = "--" ]; then
+            found_delim=1
+        else
+            script_args+=("$arg")
+        fi
+    else
+        extra_args+=("$arg")
+    fi
+done
+
+# The wallpaper file is the first argument before the delimiter.
+WALLPAPER="${script_args[0]}"
+
+# Run script with any extra arguments passed after '--'
+wallust run "$WALLPAPER" "${extra_args[@]}" --check-contrast
+
+# Reapply spice
 spicetify apply
 
-# set wallpaper
+# Set wallpaper
 hyprctl hyprpaper reload ,"$WALLPAPER"
 
-# update gtk theme
+# Update GTK theme
 zsh ~/.themes/gen_wallust_gtk.sh
-
-
 

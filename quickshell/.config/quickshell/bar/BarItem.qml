@@ -19,7 +19,7 @@ Item {
     WrapperRectangle {
         id: bg
 
-        color: hovered ? Theme.colors.text : "transparent"
+        color: hovered ? Theme.colors.selected : "transparent"
         implicitHeight: Config.bar.height
         leftMargin: padding
         rightMargin: padding

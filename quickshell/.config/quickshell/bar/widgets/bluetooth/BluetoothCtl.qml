@@ -37,7 +37,7 @@ StyledPopup {
                 return btList.currentIndex === index ? get_border_color() : Theme.colors.background;
             }
             function get_border_color() {
-                return modelData.connected ? Theme.colors.warning : Theme.colors.text;
+                return modelData.connected ? Theme.colors.active : btList.currentIndex === index ? Theme.colors.selected : Theme.colors.text;
             }
             function get_text_color(col = Theme.colors.text) {
                 return btList.currentIndex === index ? Theme.colors.background : col;

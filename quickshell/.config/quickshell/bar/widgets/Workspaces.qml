@@ -28,7 +28,7 @@ BarItem {
                 readonly property var screen: QsWindow.window?.screen
 
                 Layout.fillHeight: true
-                color: focused ? Theme.colors.warning : active ? Theme.colors.text : "transparent"
+                color: focused ? Theme.colors.selected : active ? Theme.colors.active : "transparent"
                 implicitWidth: 20
                 visible: onCurrentMonitor
 

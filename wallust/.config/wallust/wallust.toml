@@ -53,4 +53,4 @@ rofi = { template = "colors.rasi", target = "~/.config/rofi/colors.rasi" }
 gtk = { template = "wallust_gtk_theme.sh", target = "~/.themes/gen_wallust_gtk.sh" }
 hypr = { template = "hyprland-colors.conf", target = "~/.config/hypr/colors.conf" }
 tmux = { template = "tmux-colors.conf", target = "~/.tmux/colors.conf" }
-
+jing = { template = "jing-colors.qml", target = "~/.config/quickshell/common/Colors.qml" }

@@ -21,22 +21,24 @@ Singleton {
             id: configJsonAdapter
 
             property JsonObject colors: JsonObject {
+                property string active: Colors.color12
 
                 // Backgrounds
-                property string background: "#24283b"
-                property string backgroundDark: "#1f2335"
-                property string backgroundDarker: "#1b1e2d"
-                property string backgroundHighlight: "#292e42"
-                property string danger: "#f7768e"
-                property string dangerDark: "#db4b4b"
+                property string background: Colors.background
+                property color backgroundDark: Qt.darker(background, 1.1)
+                property color backgroundDarker: Qt.darker(background, 1.2)
+                property string backgroundHighlight: Qt.lighter(background, 1.1)
+                property string danger: Colors.color9
+                property string dangerDark: Colors.color1
+                property string selected: Colors.color5
 
                 // States (Success/Warning/Danger)
-                property string success: "#9ece6a"
+                property string success: Colors.color2
 
                 // Foregrounds / Text
-                property string text: "#c0caf5"
-                property string textMuted: "#a9b1d6"
-                property string warning: "#e0af68"
+                property string text: Colors.foreground
+                property string textMuted: Colors.color7
+                property string warning: Colors.color3
             }
             property JsonObject font: JsonObject {
                 property JsonObject family: JsonObject {

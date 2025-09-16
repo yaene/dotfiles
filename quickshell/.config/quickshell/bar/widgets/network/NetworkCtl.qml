@@ -48,7 +48,7 @@ StyledPopup {
                 if (root.failedSSID === ssid) {
                     return Theme.colors.danger;
                 }
-                return NetworkService.connectedSSID === ssid ? Theme.colors.warning : Theme.colors.text;
+                return NetworkService.connectedSSID === ssid ? Theme.colors.active : wifiList.currentIndex === index ? Theme.colors.selected : Theme.colors.text;
             }
             function get_text_color(col = Theme.colors.text) {
                 return wifiList.currentIndex === index ? Theme.colors.background : col;

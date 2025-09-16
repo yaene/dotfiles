@@ -114,12 +114,10 @@ Scope {
             }
             RectangularShadow {
                 anchors.fill: container
-                blur: 24
                 cached: true
-                color: "#1a1a1a"
+                color: "#000000"
                 offset: Qt.vector2d(0, 8)
-                radius: 18
-                spread: 8
+                radius: container.radius
             }
             Rectangle {
                 id: container

@@ -29,12 +29,11 @@ PopupWindow {
 
     RectangularShadow {
         anchors.fill: container
-        blur: 24
         cached: true
-        color: "#1a1a1a"
+        color: "#000000"
         offset: Qt.vector2d(0, 8)
-        radius: 8
-        spread: 15
+        opacity: 0.4
+        radius: container.radius
     }
     MouseArea {
         anchors.fill: parent

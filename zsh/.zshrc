@@ -159,3 +159,5 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(zoxide init zsh)"
 alias cd="z"
 
+
+export PATH=$PATH:$HOME/.spicetify

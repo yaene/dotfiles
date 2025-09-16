@@ -1,4 +1,9 @@
 hyprland/.config/hypr/display-setup.conf
-hyprland/.config/hypr/hyprpaper.conf
+hyprland/.config/hypr/colors.conf
 yazi/.config/yazi/plugins
 yazi/.config/yazi/flavors
+foot/.config/foot/colors.ini
+rofi/.config/rofi/colors.rasi
+spicetify/.config/spicetify/Themes/wallust/color.ini
+nvim/.config/nvim/lua/wallust/colors.lua
+

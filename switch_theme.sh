@@ -27,7 +27,7 @@ wallust run "$WALLPAPER" "${extra_args[@]}" --check-contrast
 spicetify apply
 
 # Set wallpaper
-hyprctl hyprpaper reload ,"$WALLPAPER"
+swww img "$WALLPAPER"
 
 # Update GTK theme
 zsh ~/.themes/gen_wallust_gtk.sh

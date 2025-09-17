@@ -67,9 +67,10 @@ pacman -S \
 # install hyprland and related tools
 pacman -S \
   hyprland \
-  hyprpaper \
   hyprlock \
-  hypridle
+  hypridle \
+  swww
+
 
 
 # yay

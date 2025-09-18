@@ -4,7 +4,7 @@ import qs.common
 Rectangle {
     id: header
 
-    color: Theme.colors.background
+    color: "transparent"
     implicitHeight: 48
     radius: 8
     width: parent.width

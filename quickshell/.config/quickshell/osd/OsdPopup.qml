@@ -9,7 +9,7 @@ Scope {
 
     default property alias content: osd.contentComponent
     property Component contentComponent: osdContent
-    property int height: 100
+    property int height: 130
     property string leftLabel: ""
     property int percentage: 50
     property string rightLabel: ""
@@ -115,17 +115,16 @@ Scope {
             RectangularShadow {
                 anchors.fill: container
                 cached: true
-                color: "#000000"
+                color: Qt.rgba(0, 0, 0, 0.4)
                 offset: Qt.vector2d(0, 8)
                 radius: container.radius
+                spread: 10
             }
             Rectangle {
                 id: container
 
                 anchors.centerIn: parent
-                border.color: Theme.colors.text
-                border.width: 2
-                color: Theme.colors.background
+                color: Theme.colors.opaqueBackground(0.9)
                 height: osd.height
                 opacity: 0.8
                 radius: 18

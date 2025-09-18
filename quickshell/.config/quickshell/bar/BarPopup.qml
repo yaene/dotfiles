@@ -46,7 +46,7 @@ PopupWindow {
         id: container
 
         anchors.centerIn: parent
-        color: Theme.colors.background
+        color: Theme.colors.opaqueBackground(0.8)
         radius: 8
         z: 1
 

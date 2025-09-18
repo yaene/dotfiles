@@ -24,7 +24,7 @@ Singleton {
                 property string active: Colors.color12
 
                 // Backgrounds
-                property string background: Colors.background
+                property color background: Colors.background
                 property color backgroundDark: Qt.darker(background, 1.1)
                 property color backgroundDarker: Qt.darker(background, 1.2)
                 property string backgroundHighlight: Qt.lighter(background, 1.1)
@@ -41,6 +41,10 @@ Singleton {
                 property string textMuted: Colors.color7
                 property color title: Colors.color4
                 property string warning: Colors.color3
+
+                function opaqueBackground(alpha) {
+                    return Qt.rgba(colors.background.r, colors.background.g, colors.background.b, alpha);
+                }
             }
             property JsonObject font: JsonObject {
                 property JsonObject family: JsonObject {

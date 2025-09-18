@@ -37,8 +37,7 @@ PanelWindow {
         id: container
 
         anchors.centerIn: parent
-        color: Theme.colors.background
-        contentInsideBorder: true
+        color: Theme.colors.opaqueBackground(0.9)
         radius: 8
 
         Keys.onPressed: event => {

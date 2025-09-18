@@ -6,7 +6,7 @@ Rectangle {
 
     property bool active: false
     property color activeColor: Theme.colors.active
-    property color background: Theme.colors.background
+    property color background: "transparent"
     default property alias data: contentRow.data
     property bool selected: false
     property color selectedColor: Theme.colors.selected
@@ -14,7 +14,7 @@ Rectangle {
 
     border.color: active ? activeColor : selected ? selectedColor : Colors.color8
     border.width: 1
-    color: selected ? border.color : Theme.colors.background
+    color: selected ? border.color : background
     implicitHeight: contentRow.implicitHeight + verticalPadding
     radius: 8
 

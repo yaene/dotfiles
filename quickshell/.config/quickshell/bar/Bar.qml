@@ -12,6 +12,8 @@ Scope {
     id: root
 
     Variants {
+        id: bars
+
         model: Quickshell.screens
 
         PanelWindow {
@@ -22,10 +24,6 @@ Scope {
             color: Config.bar.transparent ? "transparent" : Theme.colors.backgroundDarker
             implicitHeight: Config.bar.height + 2 * borderRect.border.width
             screen: modelData
-
-            Component.onCompleted: {
-                Globals.barWindow = barWindow;
-            }
 
             anchors {
                 left: true
@@ -93,8 +91,10 @@ Scope {
                     Battery {
                     }
                     Bluetooth {
+                        barWindow: barWindow
                     }
                     Network {
+                        barWindow: barWindow
                     }
                 }
             }

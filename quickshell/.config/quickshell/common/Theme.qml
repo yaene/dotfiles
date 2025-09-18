@@ -30,6 +30,7 @@ Singleton {
                 property string backgroundHighlight: Qt.lighter(background, 1.1)
                 property string danger: Colors.color9
                 property string dangerDark: Colors.color1
+                property color primaryButton: Colors.color6
                 property string selected: Colors.color5
 
                 // States (Success/Warning/Danger)
@@ -38,6 +39,7 @@ Singleton {
                 // Foregrounds / Text
                 property string text: Colors.foreground
                 property string textMuted: Colors.color7
+                property color title: Colors.color4
                 property string warning: Colors.color3
             }
             property JsonObject font: JsonObject {

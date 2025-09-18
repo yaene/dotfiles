@@ -5,8 +5,9 @@ import QtQuick.Controls
 import Quickshell.Widgets
 import qs.services
 import qs.common
+import qs.bar
 
-StyledPopup {
+BarPopup {
     id: root
 
     readonly property bool askPassword: NetworkService.askPassword

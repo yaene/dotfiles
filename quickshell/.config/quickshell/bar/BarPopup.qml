@@ -1,29 +1,38 @@
 import QtQuick
 import Quickshell
 import Quickshell.Widgets
+import Quickshell.Hyprland
+import QtQuick.Effects
+import QtQuick.Controls
+import qs.common
 
-PanelWindow {
+PopupWindow {
     id: root
 
     property alias child: container.child
     default property alias data: container.data
 
     function hide() {
+        grab.active = false;
         root.visible = false;
     }
     function show() {
         root.visible = true;
+        grab.active = true;
     }
 
     color: "transparent"
-    focusable: true
+    implicitHeight: anchor.window.screen.height
+    implicitWidth: anchor.window.screen.width
     visible: false
 
-    anchors {
-        bottom: true
-        left: true
-        right: true
-        top: true
+    RectangularShadow {
+        anchors.fill: container
+        cached: true
+        color: "#000000"
+        offset: Qt.vector2d(0, 8)
+        opacity: 0.4
+        radius: container.radius
     }
     MouseArea {
         anchors.fill: parent
@@ -38,14 +47,23 @@ PanelWindow {
 
         anchors.centerIn: parent
         color: Theme.colors.background
-        contentInsideBorder: true
         radius: 8
+        z: 1
 
         Keys.onPressed: event => {
             if (event.key === Qt.Key_Escape) {
-                root.visible = false;
+                root.hide();
                 event.accepted = true;
             }
+        }
+    }
+    HyprlandFocusGrab {
+        id: grab
+
+        windows: [root]
+
+        onCleared: () => {
+            root.hide();
         }
     }
 }

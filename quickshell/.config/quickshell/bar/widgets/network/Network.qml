@@ -7,6 +7,10 @@ import qs.services
 import "../.."
 
 Item {
+    id: root
+
+    property QsWindow barWindow
+
     implicitHeight: barItem.implicitHeight
     implicitWidth: barItem.implicitWidth
 
@@ -35,14 +39,19 @@ Item {
         id: networkCtlLoader
 
         loading: true
-        source: "NetworkCtl.qml"
+
+        NetworkCtl {
+            anchor.window: root.barWindow
+        }
     }
     GlobalShortcut {
         description: "Open simple network selection widget"
         name: "openNetworkSelection"
 
         onPressed: {
-            networkCtlLoader.item.show();
+            if (root.barWindow.screen === Utils.getActiveScreen()) {
+                networkCtlLoader.item.show();
+            }
         }
     }
 }

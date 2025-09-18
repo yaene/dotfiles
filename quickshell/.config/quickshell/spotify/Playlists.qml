@@ -18,12 +18,12 @@ StyledSelectList {
         required property int index
         required property Playlist modelData
 
-        color: ListView.isCurrentItem ? Theme.colors.text : Theme.colors.background
+        selected: ListView.isCurrentItem
         width: parent.width
 
         Text {
             Layout.fillWidth: true
-            color: playlistItem.ListView.isCurrentItem ? Theme.colors.background : Theme.colors.text
+            color: selected ? Theme.colors.background : Theme.colors.text
             font.pixelSize: Theme.font.size.medium
             text: modelData.name
         }

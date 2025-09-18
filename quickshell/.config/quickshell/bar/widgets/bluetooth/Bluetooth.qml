@@ -6,6 +6,10 @@ import qs.common
 import "../.."
 
 Item {
+    id: root
+
+    property QsWindow barWindow
+
     implicitHeight: barItem.implicitHeight
     implicitWidth: barItem.implicitWidth
 
@@ -50,12 +54,19 @@ Item {
         id: bluetoothCtlLoader
 
         loading: true
-        source: "BluetoothCtl.qml"
+
+        BluetoothCtl {
+            anchor.window: root.barWindow
+        }
     }
     GlobalShortcut {
         description: "Open simple bluetooth connection widget"
         name: "openBluetoothConnection"
 
-        onPressed: bluetoothCtlLoader.item.show()
+        onPressed: {
+            if (root.barWindow.screen === Utils.getActiveScreen()) {
+                bluetoothCtlLoader.item.show();
+            }
+        }
     }
 }

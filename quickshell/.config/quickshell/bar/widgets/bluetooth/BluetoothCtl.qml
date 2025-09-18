@@ -3,8 +3,9 @@ import Quickshell
 import QtQuick.Layouts
 import Quickshell.Bluetooth
 import qs.common
+import qs.bar
 
-StyledPopup {
+BarPopup {
     id: root
 
     property BluetoothAdapter adapter: Bluetooth.defaultAdapter

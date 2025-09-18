@@ -81,7 +81,7 @@ RowLayout {
 
         // Song + Artist
         Text {
-            color: Theme.colors.text
+            color: Theme.colors.title
             elide: Text.ElideRight
             font.bold: true
             font.pixelSize: 18
@@ -128,14 +128,14 @@ RowLayout {
 
                 background: Rectangle {
                     anchors.fill: parent
-                    color: Theme.colors.backgroundDark
+                    color: Colors.color0
                     radius: 8
                 }
                 contentItem: Item {
                     anchors.fill: parent
 
                     Rectangle {
-                        color: Theme.colors.text
+                        color: Theme.colors.active
                         height: parent.height
                         radius: 8
                         width: progress.visualPosition * parent.width
@@ -159,6 +159,7 @@ RowLayout {
             ToolTip.text: player?.shuffle ? "Shuffle On" : "Shuffle Off"
             font.family: Theme.font.family.nerd
             font.pixelSize: Theme.font.size.large
+            palette.buttonText: Theme.colors.primaryButton
             text: player?.shuffle ? "󰒟" : "󰒞"
 
             background: Rectangle {
@@ -171,6 +172,7 @@ RowLayout {
         Button {
             font.family: Theme.font.family.nerd
             font.pixelSize: Theme.font.size.large
+            palette.buttonText: Theme.colors.primaryButton
             text: "󰙣"
 
             background: Rectangle {
@@ -182,6 +184,7 @@ RowLayout {
         Button {
             font.family: Theme.font.family.nerd
             font.pixelSize: Theme.font.size.large
+            palette.buttonText: Theme.colors.primaryButton
             text: player?.isPlaying ? "" : ""
 
             background: Rectangle {
@@ -193,6 +196,7 @@ RowLayout {
         Button {
             font.family: Theme.font.family.nerd
             font.pixelSize: Theme.font.size.large
+            palette.buttonText: Theme.colors.primaryButton
             text: "󰙡"
 
             background: Rectangle {
@@ -205,6 +209,7 @@ RowLayout {
             ToolTip.text: player?.loopState === MprisLoopState.None ? "Repeat Off" : player?.loopState === MprisLoopState.Playlist ? "Loop Playlist" : "Loop Track"
             font.family: Theme.font.family.nerd
             font.pixelSize: Theme.font.size.large
+            palette.buttonText: Theme.colors.primaryButton
             text: player?.loopState === MprisLoopState.None ? "󰑗" : player?.loopState === MprisLoopState.Playlist ? "󰑖" : "󰑘"
 
             background: Rectangle {

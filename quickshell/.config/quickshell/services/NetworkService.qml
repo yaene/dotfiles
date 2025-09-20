@@ -2,6 +2,7 @@ pragma Singleton
 import Quickshell
 import Quickshell.Io
 import QtQuick
+import QtQuick.Controls
 
 Singleton {
     id: root
@@ -121,7 +122,7 @@ Singleton {
                 let hasEther = false;
                 for (const line of lines) {
                     if (line.includes("routable")) {
-                        const fields = line.trim().split(" ");
+                        const fields = line.trim().split(" ").filter(Boolean);
                         const type = fields[2];
                         if (type === "wlan") {
                             checkSignalStrength(fields[1]);

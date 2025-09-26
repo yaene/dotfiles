@@ -13,6 +13,7 @@ Singleton {
     NotificationServer {
         id: notificationServer
 
+        actionsSupported: true
         keepOnReload: false
 
         onNotification: notification => {

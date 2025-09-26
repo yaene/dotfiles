@@ -14,7 +14,7 @@ PanelWindow {
     implicitHeight: notifications.implicitHeight
     implicitWidth: notifications.implicitWidth
     margins.top: 15
-    visible: NotificationService.notExpired.length > 0
+    visible: NotificationService.notifications.length > 0
 
     ColumnLayout {
         id: notifications
@@ -22,7 +22,7 @@ PanelWindow {
         spacing: 10
 
         Repeater {
-            model: NotificationService.notExpired
+            model: NotificationService.notifications
 
             delegate: Noti {
             }

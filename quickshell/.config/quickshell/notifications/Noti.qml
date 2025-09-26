@@ -7,77 +7,133 @@ import Quickshell.Widgets
 import QtQuick.Layouts
 
 WrapperRectangle {
-    id: notification
+    id: root
 
     readonly property bool hasAppIcon: noti.appIcon.length > 0
     required property Notif modelData
     readonly property Notification noti: modelData.notification
 
     Layout.alignment: Qt.AlignHCenter
-    Layout.preferredHeight: 100
-    Layout.preferredWidth: 400
     color: Theme.colors.opaqueBackground(0.9)
     margin: 10
     radius: 8
 
-    GridLayout {
-        columnSpacing: 10
-        columns: 2
-        rowSpacing: 5
-        rows: 3
+    Item {
+        implicitHeight: content.height
+        implicitWidth: content.width
 
-        Loader {
-            id: appIcon
+        NerdIconButton {
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.topMargin: -5
+            size: 20
+            text: "󰅖"
 
-            Layout.alignment: Qt.AlignTop
-            Layout.column: 0
-            Layout.preferredWidth: icon.width
-            Layout.row: 0
-            Layout.rowSpan: 3
-            active: notification.hasAppIcon
-            asynchronous: true
-            visible: notification.hasAppIcon
+            onClicked: root.noti.dismiss()
+        }
+        GridLayout {
+            id: content
 
-            sourceComponent: ClippingRectangle {
-                color: "transparent"
-                implicitHeight: 40
-                implicitWidth: 40
+            columnSpacing: 10
+            columns: 2
+            rowSpacing: 5
+            rows: 4
+            width: 400
 
-                Image {
-                    id: icon
+            Loader {
+                id: appIcon
 
-                    anchors.fill: parent
-                    source: Quickshell.iconPath(notification.noti.appIcon)
+                Layout.alignment: Qt.AlignTop
+                Layout.column: 0
+                Layout.preferredWidth: icon.width
+                Layout.row: 0
+                Layout.rowSpan: 4
+                active: root.hasAppIcon
+                asynchronous: true
+                visible: root.hasAppIcon
+
+                sourceComponent: ClippingRectangle {
+                    color: "transparent"
+                    implicitHeight: 40
+                    implicitWidth: 40
+
+                    Image {
+                        id: icon
+
+                        anchors.fill: parent
+                        source: Quickshell.iconPath(root.noti.appIcon)
+                    }
+                }
+            }
+            Text {
+                id: app
+
+                Layout.column: 1
+                Layout.row: 0
+                color: Theme.colors.title
+                font.bold: true
+                font.pixelSize: Theme.font.size.smaller
+                text: noti.appName
+            }
+            Text {
+                id: summary
+
+                Layout.column: 1
+                Layout.row: 1
+                color: Theme.colors.text
+                font.bold: true
+                text: noti.summary
+            }
+            Text {
+                id: body
+
+                Layout.column: 1
+                Layout.fillWidth: true
+                Layout.row: 2
+                color: Theme.colors.text
+                text: noti.body
+            }
+            RowLayout {
+                id: actions
+
+                Layout.alignment: Qt.AlignRight
+                Layout.column: 1
+                Layout.row: 3
+
+                Repeater {
+                    model: noti.actions
+
+                    delegate: Action {
+                        Layout.alignment: Qt.AlignRight
+                    }
                 }
             }
         }
-        Text {
-            id: app
+    }
 
-            Layout.column: 1
-            Layout.row: 0
-            color: Theme.colors.title
-            font.bold: true
-            font.pixelSize: Theme.font.size.smaller
-            text: noti.appName
+    component Action: Rectangle {
+        required property NotificationAction modelData
+
+        Layout.preferredHeight: actionText.height + 2 * 5
+        Layout.preferredWidth: actionText.width + 2 * 10
+        color: Theme.colors.primaryButton
+        radius: 15
+
+        Text {
+            id: actionText
+
+            anchors.centerIn: parent
+            color: Theme.colors.background
+            text: modelData.text
         }
-        Text {
-            id: summary
+        MouseArea {
+            id: area
 
-            Layout.column: 1
-            Layout.row: 1
-            color: Theme.colors.text
-            font.bold: true
-            text: noti.summary
-        }
-        Text {
-            id: body
+            anchors.fill: parent
 
-            Layout.column: 1
-            Layout.fillWidth: true
-            Layout.row: 2
-            color: Theme.colors.text
-            text: noti.body
+            onClicked: {
+                modelData.invoke();
+            }
         }
     }
 }

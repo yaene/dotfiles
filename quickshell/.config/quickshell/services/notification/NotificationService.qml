@@ -8,7 +8,7 @@ Singleton {
     id: root
 
     readonly property list<Notif> notExpired: notifications.filter(notif => !notif.expired)
-    property list<Notif> notifications
+    property list<Notif> notifications: []
 
     NotificationServer {
         id: notificationServer
@@ -21,6 +21,10 @@ Singleton {
             notification.tracked = true;
             const notif = notificationComp.createObject(root, {
                 notification: notification
+            });
+            notification.closed.connect(() => {
+                console.log("notification closed");
+                root.notifications = root.notifications.filter(n => n.notification !== notification);
             });
             root.notifications = [notif, ...root.notifications];
         }

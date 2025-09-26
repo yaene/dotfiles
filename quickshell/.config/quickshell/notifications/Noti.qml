@@ -6,7 +6,7 @@ import Quickshell
 import Quickshell.Widgets
 import QtQuick.Layouts
 
-Rectangle {
+WrapperRectangle {
     id: notification
 
     readonly property bool hasAppIcon: noti.appIcon.length > 0
@@ -17,19 +17,23 @@ Rectangle {
     Layout.preferredHeight: 100
     Layout.preferredWidth: 400
     color: Theme.colors.opaqueBackground(0.9)
+    margin: 10
     radius: 8
 
-    RowLayout {
-        anchors.bottom: parent.bottom
-        anchors.top: parent.top
-        spacing: 10
+    GridLayout {
+        columnSpacing: 10
+        columns: 2
+        rowSpacing: 5
+        rows: 3
 
         Loader {
             id: appIcon
 
             Layout.alignment: Qt.AlignTop
-            Layout.leftMargin: 8
-            Layout.topMargin: 8
+            Layout.column: 0
+            Layout.preferredWidth: icon.width
+            Layout.row: 0
+            Layout.rowSpan: 3
             active: notification.hasAppIcon
             asynchronous: true
             visible: notification.hasAppIcon
@@ -40,36 +44,40 @@ Rectangle {
                 implicitWidth: 40
 
                 Image {
+                    id: icon
+
                     anchors.fill: parent
                     source: Quickshell.iconPath(notification.noti.appIcon)
                 }
             }
         }
-        ColumnLayout {
-            spacing: 5
+        Text {
+            id: app
 
-            Text {
-                id: app
+            Layout.column: 1
+            Layout.row: 0
+            color: Theme.colors.title
+            font.bold: true
+            font.pixelSize: Theme.font.size.smaller
+            text: noti.appName
+        }
+        Text {
+            id: summary
 
-                Layout.alignment: Qt.AlignTop
-                color: Theme.colors.title
-                font.bold: true
-                font.pixelSize: Theme.font.size.smaller
-                text: noti.appName
-            }
-            Text {
-                id: summary
+            Layout.column: 1
+            Layout.row: 1
+            color: Theme.colors.text
+            font.bold: true
+            text: noti.summary
+        }
+        Text {
+            id: body
 
-                color: Theme.colors.text
-                font.bold: true
-                text: noti.summary
-            }
-            Text {
-                id: body
-
-                color: Theme.colors.text
-                text: noti.body
-            }
+            Layout.column: 1
+            Layout.fillWidth: true
+            Layout.row: 2
+            color: Theme.colors.text
+            text: noti.body
         }
     }
 }

@@ -19,6 +19,8 @@ PanelWindow {
     ColumnLayout {
         id: notifications
 
+        spacing: 10
+
         Repeater {
             model: NotificationService.notExpired
 

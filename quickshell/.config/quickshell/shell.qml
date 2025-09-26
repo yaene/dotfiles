@@ -3,6 +3,7 @@ import QtQuick
 import "./bar"
 import "./osd"
 import "./spotify"
+import "./notifications"
 
 ShellRoot {
     Bar {
@@ -12,5 +13,7 @@ ShellRoot {
     VolumeOSD {
     }
     Spotify {
+    }
+    Notifications {
     }
 }

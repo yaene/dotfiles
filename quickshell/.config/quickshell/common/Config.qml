@@ -25,6 +25,9 @@ Singleton {
                 property int height: 30
                 property bool transparent: false
             }
+            property JsonObject notifications: JsonObject {
+                property int defaultExpireTimeout: 5000
+            }
             property JsonObject osd: JsonObject {
                 property int hideTimeout: 800
             }

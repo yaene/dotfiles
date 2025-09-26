@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell.Services.Notifications
+import qs.common
 
 Item {
     id: notif
@@ -16,7 +17,7 @@ Item {
     }
 
     Timer {
-        interval: expireTimeout
+        interval: expireTimeout > 0 ? expireTimeout : Config.notifications.defaultExpireTimeout
         running: true
 
         onTriggered: {

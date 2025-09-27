@@ -19,7 +19,7 @@ Item {
 
         anchors.centerIn: parent
 
-        onPressed: networkCtlLoader.item.visible = !networkCtlLoader.item.visible
+        onPressed: networkCtlLoader.item.show()
 
         Text {
             id: icon

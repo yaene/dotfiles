@@ -38,7 +38,7 @@ Item {
 
         anchors.centerIn: parent
 
-        onPressed: bluetoothCtlLoader.item.visible = !bluetoothCtlLoader.item.visible
+        onPressed: bluetoothCtlLoader.item.show()
 
         Text {
             color: barItem.hovered ? Theme.colors.background : Theme.colors.text

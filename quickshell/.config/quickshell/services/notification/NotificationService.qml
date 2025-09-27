@@ -14,6 +14,7 @@ Singleton {
         id: notificationServer
 
         actionsSupported: true
+        imageSupported: true
         keepOnReload: false
 
         onNotification: notification => {

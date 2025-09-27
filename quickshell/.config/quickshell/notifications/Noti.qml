@@ -10,6 +10,7 @@ WrapperRectangle {
     id: root
 
     readonly property bool hasAppIcon: noti.appIcon.length > 0
+    readonly property bool hasImage: noti.image.length > 0
     required property Notif modelData
     readonly property Notification noti: modelData.notification
 
@@ -41,28 +42,27 @@ WrapperRectangle {
             width: 400
 
             Loader {
-                id: appIcon
+                id: iconLoader
 
                 Layout.alignment: Qt.AlignTop
                 Layout.column: 0
-                Layout.preferredWidth: icon.width
                 Layout.row: 0
-                Layout.rowSpan: 4
-                active: root.hasAppIcon
+                active: true
                 asynchronous: true
-                visible: root.hasAppIcon
+                sourceComponent: root.hasAppIcon ? notiIcon : notiIconPlaceholder
+            }
+            Loader {
+                id: imageLoader
 
-                sourceComponent: ClippingRectangle {
-                    color: "transparent"
-                    implicitHeight: 40
-                    implicitWidth: 40
+                Layout.alignment: Qt.AlignTop
+                Layout.column: 0
+                Layout.row: 1
+                Layout.rowSpan: 3
+                active: root.hasImage
+                asynchronous: true
+                visible: root.hasImage
 
-                    Image {
-                        id: icon
-
-                        anchors.fill: parent
-                        source: Quickshell.iconPath(root.noti.appIcon)
-                    }
+                sourceComponent: NotiImage {
                 }
             }
             Text {
@@ -110,6 +110,38 @@ WrapperRectangle {
             }
         }
     }
+    Component {
+        id: notiIcon
+
+        ClippingRectangle {
+            color: "transparent"
+            implicitHeight: Config.notifications.iconSize
+            implicitWidth: Config.notifications.iconSize
+
+            Image {
+                id: icon
+
+                anchors.fill: parent
+                source: Quickshell.iconPath(root.noti.appIcon)
+            }
+        }
+    }
+    Component {
+        id: notiIconPlaceholder
+
+        WrapperRectangle {
+            color: "transparent"
+            implicitHeight: Config.notifications.iconSize
+            implicitWidth: Config.notifications.iconSize
+
+            Text {
+                id: icon
+
+                color: Theme.colors.danger
+                text: "󰋽"
+            }
+        }
+    }
 
     component Action: Rectangle {
         required property NotificationAction modelData
@@ -134,6 +166,18 @@ WrapperRectangle {
             onClicked: {
                 modelData.invoke();
             }
+        }
+    }
+    component NotiImage: ClippingRectangle {
+        color: "transparent"
+        implicitHeight: Config.notifications.imageSize
+        implicitWidth: Config.notifications.imageSize
+
+        Image {
+            id: image
+
+            anchors.fill: parent
+            source: Qt.resolvedUrl(root.noti.image)
         }
     }
 }

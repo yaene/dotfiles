@@ -15,6 +15,12 @@ BarPopup {
     property string connectionError: ""
     property string failedSSID: ""
 
+    function connectNetwork(ssid) {
+        root.failedSSID = "";
+        root.connectingSSID = network.ssid;
+        NetworkService.connect(network.ssid);
+    }
+
     child: wifiList
 
     onVisibleChanged: {
@@ -51,6 +57,15 @@ BarPopup {
             color: get_bg_color()
             selected: wifiList.currentIndex === index
             width: wifiList.width
+
+            onClicked: {
+                root.connectNetwork(network.ssid);
+            }
+            onHoveredChanged: {
+                if (hovered) {
+                    wifiList.currentIndex = index;
+                }
+            }
 
             Text {
                 Layout.preferredWidth: 30
@@ -113,9 +128,7 @@ BarPopup {
         }
 
         onSelected: network => {
-            root.failedSSID = "";
-            root.connectingSSID = network.ssid;
-            NetworkService.connect(network.ssid);
+            root.connectNetwork(network.ssid);
         }
     }
     Connections {

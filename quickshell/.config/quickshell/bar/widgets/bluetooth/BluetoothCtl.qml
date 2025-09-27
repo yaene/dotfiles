@@ -10,6 +10,14 @@ BarPopup {
 
     property BluetoothAdapter adapter: Bluetooth.defaultAdapter
 
+    function onDeviceSelected(device) {
+        if (device.connected) {
+            device.disconnect();
+        } else {
+            device.connect();
+        }
+    }
+
     child: btList
 
     onVisibleChanged: {
@@ -43,6 +51,15 @@ BarPopup {
             selected: btList.currentIndex === index
             textColor: btDevice.get_text_color()
             width: btList.width
+
+            onClicked: {
+                root.onDeviceSelected(device);
+            }
+            onHoveredChanged: {
+                if (hovered) {
+                    btList.currentIndex = index;
+                }
+            }
         }
         header: StyledListHeader {
             RowLayout {
@@ -67,12 +84,6 @@ BarPopup {
             }
         }
 
-        onSelected: device => {
-            if (device.connected) {
-                device.disconnect();
-            } else {
-                device.connect();
-            }
-        }
+        onSelected: device => root.onDeviceSelected(device)
     }
 }

@@ -8,9 +8,12 @@ Rectangle {
     property color activeColor: Theme.colors.active
     property color background: "transparent"
     default property alias data: contentRow.data
+    property bool hovered: mouseArea.containsMouse
     property bool selected: false
     property color selectedColor: Theme.colors.selected
     property int verticalPadding: 20
+
+    signal clicked
 
     border.color: active ? activeColor : selected ? selectedColor : Colors.color8
     border.width: 1
@@ -24,5 +27,13 @@ Rectangle {
         anchors.fill: parent
         anchors.margins: 10
         spacing: 45
+    }
+    MouseArea {
+        id: mouseArea
+
+        anchors.fill: contentRow
+        hoverEnabled: true
+
+        onClicked: item.clicked()
     }
 }

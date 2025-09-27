@@ -29,6 +29,10 @@ StyledSelectItem {
             if (device.paired) {
                 device.forget();
             }
+        } else if (event.key === Qt.Key_P) {
+            if (!device.paired) {
+                device.pair();
+            }
         }
     }
 

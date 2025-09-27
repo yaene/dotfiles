@@ -25,8 +25,8 @@ Singleton {
 
                 // Backgrounds
                 property color background: Colors.background
-                property color backgroundDark: Qt.darker(background, 1.1)
-                property color backgroundDarker: Qt.darker(background, 1.2)
+                property color backgroundDark: Qt.darker(background, 1.2)
+                property color backgroundDarker: Qt.darker(background, 1.5)
                 property string backgroundHighlight: Qt.lighter(background, 1.1)
                 property string danger: Colors.color9
                 property string dangerDark: Colors.color1

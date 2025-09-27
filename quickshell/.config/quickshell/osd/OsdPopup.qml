@@ -62,7 +62,7 @@ Scope {
                 anchors.margins: 20
                 anchors.right: rightBarLabel.left
                 anchors.verticalCenter: parent.verticalCenter
-                color: "#444444bb"
+                color: Theme.colors.backgroundDarker
                 height: 16
                 radius: 8
             }
@@ -73,7 +73,7 @@ Scope {
 
                 anchors.left: bgBar.left
                 anchors.verticalCenter: bgBar.verticalCenter
-                color: Theme.colors.text
+                color: Theme.colors.active
                 height: bgBar.height
                 radius: 8
                 width: (bgBar.width) * osd.percentage / 100

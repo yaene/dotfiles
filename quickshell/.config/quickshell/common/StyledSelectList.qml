@@ -12,7 +12,7 @@ ListView {
     clip: true
     focus: true
     highlightMoveDuration: 1
-    implicitHeight: list.contentHeight + (list.headerItem?.height || 0)
+    implicitHeight: Math.min(list.contentHeight + (list.headerItem?.height || 0), 500)
     keyNavigationWraps: true
     spacing: 10
 

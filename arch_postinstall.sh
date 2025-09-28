@@ -62,7 +62,10 @@ pacman -S "${core_utils[@]}"
 # some useful user applications
 pacman -S \
   firefox \
+  jq \
+  poppler \
   yazi \
+  resvg \
   spotify-launcher
 
 # install hyprland and related tools

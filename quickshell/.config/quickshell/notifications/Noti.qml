@@ -32,6 +32,18 @@ WrapperRectangle {
 
             onClicked: root.noti.dismiss()
         }
+        MouseArea {
+            anchors.fill: content
+            cursorShape: Qt.PointingHandCursor
+
+            onClicked: {
+                const defaultAction = noti.actions.find(action => action.identifier === "default");
+                if (!defaultAction) {
+                    return;
+                }
+                defaultAction.invoke();
+            }
+        }
         GridLayout {
             id: content
 
@@ -101,7 +113,7 @@ WrapperRectangle {
                 Layout.row: 3
 
                 Repeater {
-                    model: noti.actions
+                    model: noti.actions.filter(action => action.identifier !== "default")
 
                     delegate: Action {
                         Layout.alignment: Qt.AlignRight

@@ -3,13 +3,13 @@ import QtQuick
 import Quickshell
 
 Singleton {
-    property color background: "#242527"
+    property color background: "#232527"
     property color foreground: "#EEE8ED"
     property color color0: "#4E5053"
     property color color1: "#4D535B"
     property color color2: "#536278"
     property color color3: "#777072"
-    property color color4: "#7B8FAD"
+    property color color4: "#7C8FAD"
     property color color5: "#AC8681"
     property color color6: "#9B8E98"
     property color color7: "#DFD6DD"

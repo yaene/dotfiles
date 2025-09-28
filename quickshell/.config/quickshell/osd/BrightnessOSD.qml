@@ -5,40 +5,30 @@ import Quickshell.Wayland
 import qs.services
 import qs.common
 
-Scope {
-    id: root
+Variants {
+    model: Quickshell.screens
 
-    function hideBrightness() {
-        osd.hide();
-    }
-    function showBrightness() {
-        osd.show();
-    }
+    Item {
+        id: root
 
-    Connections {
-        function onBrightnessChanged() {
-            showBrightness();
+        required property ShellScreen modelData
+        property BrightnessService.Monitor monitor: monitors.find(m => m.modelData === modelData)
+        property var monitors: BrightnessService.monitors
+
+        OsdPopup {
+            id: osd
+
+            leftLabel: "󰃞"
+            rightLabel: "󰃠"
+            screen: modelData
         }
+        Connections {
+            function onBrightnessChanged() {
+                osd.show();
+                osd.percentage = root.monitor.brightness * 100;
+            }
 
-        target: BrightnessService
-    }
-    OsdPopup {
-        id: osd
-
-        leftLabel: "󰃞"
-        percentage: BrightnessService.brightness
-        rightLabel: "󰃠"
-    }
-    GlobalShortcut {
-        description: "Shows Brightness On-Screen Display"
-        name: "osdBrightnessShow"
-
-        onPressed: showBrightness()
-    }
-    GlobalShortcut {
-        description: "Shows Brightness On-Screen Display"
-        name: "osdBrightnessHide"
-
-        onPressed: hideBrightness()
+            target: root.monitor
+        }
     }
 }

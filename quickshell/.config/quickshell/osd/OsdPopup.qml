@@ -13,6 +13,7 @@ Scope {
     property string leftLabel: ""
     property int percentage: 50
     property string rightLabel: ""
+    property ShellScreen screen
     property bool showPercentage: true
     property int width: 300
 
@@ -105,6 +106,7 @@ Scope {
             // show on top of fullscreen (wayland only)
             WlrLayershell.layer: WlrLayer.Overlay
             color: "transparent"
+            screen: osd.screen
 
             anchors {
                 bottom: true

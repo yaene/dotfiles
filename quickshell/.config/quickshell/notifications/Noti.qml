@@ -37,7 +37,7 @@ WrapperRectangle {
             cursorShape: Qt.PointingHandCursor
 
             onClicked: {
-                const defaultAction = noti.actions.find(action => action.identifier === "default");
+                const defaultAction = root.noti.actions.find(action => action.identifier === "default");
                 if (!defaultAction) {
                     return;
                 }

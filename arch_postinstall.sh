@@ -34,6 +34,7 @@ core_utils=(
       nerd-fonts # fancy icons
       rofi-wayland # used for an application launcher
       brightnessctl
+      ddcutil
       openssh
       wget
       fcitx5 # input method framework
@@ -78,6 +79,9 @@ git clone https://aur.archlinux.org/yay.git /opt/yay
 cd /opt/yay
 makepkg -si
 cd
+
+# enable kernel module for monitor brightness control
+echo "i2c-dev" > /etc/modules-load.d/i2c-dev.conf
 
 # quickshell
 yay -S quickshell

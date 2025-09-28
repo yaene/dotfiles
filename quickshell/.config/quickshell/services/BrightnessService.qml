@@ -13,14 +13,14 @@ Singleton {
 
     function decreaseBrightness() {
         const monitor = monitors.find(m => m.modelData.name === Hyprland.focusedMonitor?.name);
-        monitor.setBrightness(monitor.brightness - 0.05);
+        monitor.brightness = monitor.brightness - 0.05;
     }
     function getMonitorForScreen(screen) {
         return monitors.find(m => m.modelData === screen);
     }
     function increaseBrightness() {
         const monitor = monitors.find(m => m.modelData.name === Hyprland.focusedMonitor?.name);
-        monitor.setBrightness(monitor.brightness + 0.05);
+        monitor.brightness = monitor.brightness + 0.05;
     }
 
     onMonitorsChanged: detectProc.running = true
@@ -121,10 +121,6 @@ Singleton {
             value = Math.max(0, Math.min(1, value));
             const rounded = Math.round(value * 100);
             console.log("set brightness to: ", rounded, "for display: ", displayNum);
-            if (Math.round(brightness * 100) === rounded)
-                return;
-
-            brightness = value;
 
             if (isDdc) {
                 Quickshell.execDetached(["ddcutil", "-d", displayNum, "setvcp", "10", rounded]);
@@ -134,6 +130,10 @@ Singleton {
         }
 
         Component.onCompleted: initBrightness()
+        onBrightnessChanged: {
+            console.log(brightness);
+            setBrightness(brightness);
+        }
         onDisplayNumChanged: initBrightness()
         onIsDdcChanged: initBrightness()
     }

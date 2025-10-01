@@ -34,7 +34,7 @@ BarPopup {
 
         headerHeight: 48
         implicitWidth: 600
-        model: root.adapter.devices.values
+        model: root.adapter.devices
 
         delegate: BluetoothDeviceItem {
             id: btDevice

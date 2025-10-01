@@ -1,4 +1,5 @@
 import QtQuick
+import Quickshell
 
 ListView {
     id: list
@@ -25,7 +26,8 @@ ListView {
             event.accepted = true;
         } else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
             if (list.currentIndex >= 0 && list.currentIndex < list.count) {
-                const item = list.model[list.currentIndex];
+                const item = list.model instanceof ObjectModel ? list.model.values[list.currentIndex] : list.model[list.currentIndex];
+
                 list.selected(item);
             }
             event.accepted = true;

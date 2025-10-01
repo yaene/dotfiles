@@ -53,8 +53,6 @@ BarPopup {
             }
 
             active: NetworkService.connectedSSID === ssid
-            border.color: get_border_color()
-            color: get_bg_color()
             selected: wifiList.currentIndex === index
             width: wifiList.width
 

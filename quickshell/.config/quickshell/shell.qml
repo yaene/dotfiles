@@ -1,3 +1,4 @@
+//@ pragma UseQApplication
 import Quickshell // for PanelWindow
 import QtQuick
 import "./bar"

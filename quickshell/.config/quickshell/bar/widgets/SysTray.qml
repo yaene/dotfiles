@@ -28,8 +28,8 @@ BarItem {
         anchor.rect.y: anchor.window.height + 3
         anchor.window: QsWindow.window
         color: "transparent"
-        implicitHeight: Math.max(Math.round(wrapper.implicitHeight), 32)
-        implicitWidth: Math.max(Math.round(wrapper.implicitWidth), 64)
+        implicitHeight: Math.max(Math.round(wrapper.height), 10)
+        implicitWidth: Math.max(Math.round(wrapper.width), 10)
 
         WrapperRectangle {
             id: wrapper
@@ -58,9 +58,31 @@ BarItem {
 
         required property SystemTrayItem modelData
 
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
         implicitHeight: img.height
         implicitWidth: img.width
 
+        onClicked: event => {
+            if (event.button === Qt.LeftButton) {
+                modelData.activate();
+            } else {
+                if (modelData.hasMenu) {
+                    console.log("open");
+                    menu.open();
+                }
+            }
+        }
+
+        QsMenuAnchor {
+            id: menu
+
+            anchor.item: trayItem
+            menu: trayItem.modelData.menu
+
+            anchor.margins {
+                top: 25
+            }
+        }
         Image {
             id: img
 

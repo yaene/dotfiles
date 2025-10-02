@@ -23,15 +23,6 @@ WrapperRectangle {
         implicitHeight: content.height
         implicitWidth: content.width
 
-        NerdIconButton {
-            anchors.right: parent.right
-            anchors.top: parent.top
-            anchors.topMargin: -5
-            size: 20
-            text: "󰅖"
-
-            onClicked: root.noti.dismiss()
-        }
         MouseArea {
             anchors.fill: content
             cursorShape: Qt.PointingHandCursor
@@ -53,6 +44,15 @@ WrapperRectangle {
             rows: 4
             width: 400
 
+            NerdIconButton {
+                anchors.right: parent.right
+                anchors.top: parent.top
+                anchors.topMargin: -5
+                size: 20
+                text: "󰅖"
+
+                onClicked: root.noti.dismiss()
+            }
             Loader {
                 id: iconLoader
 

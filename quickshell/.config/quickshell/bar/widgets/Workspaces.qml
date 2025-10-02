@@ -6,6 +6,8 @@ import qs.common
 import ".."
 
 BarItem {
+    hovered: false
+
     RowLayout {
         id: workspaceIndicator
 
@@ -27,7 +29,7 @@ BarItem {
                 readonly property bool onCurrentMonitor: screen.name === modelData.monitor.name
                 readonly property var screen: QsWindow.window?.screen
 
-                Layout.fillHeight: true
+                Layout.preferredHeight: Config.bar.height
                 color: focused ? Theme.colors.selected : active ? Theme.colors.active : "transparent"
                 implicitWidth: 20
                 visible: onCurrentMonitor

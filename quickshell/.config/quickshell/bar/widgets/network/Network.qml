@@ -31,7 +31,7 @@ Item {
 
             font {
                 family: Theme.font.family.nerd
-                pixelSize: Theme.font.size.large
+                pixelSize: Config.bar.iconSize
             }
         }
     }

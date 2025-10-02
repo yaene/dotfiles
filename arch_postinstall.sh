@@ -37,9 +37,6 @@ core_utils=(
       ddcutil
       openssh
       wget
-      fcitx5 # input method framework
-      fcitx5-chinese-addons
-      fcitx5-configtool
       nwg-look # gtk settings editor
       kvantum # qt theming engine
       qt6ct # qt configuration

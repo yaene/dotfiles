@@ -24,6 +24,7 @@ Singleton {
                 property bool borderOnlyBottom: true
                 property int borderWidth: 0
                 property int height: 30
+                property int iconSize: 20
                 property bool transparent: false
             }
             property JsonObject notifications: JsonObject {

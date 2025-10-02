@@ -15,6 +15,7 @@ BarItem {
         id: icon
 
         color: root.hovered ? Theme.colors.background : Theme.colors.text
+        font.pixelSize: Config.bar.iconSize
         text: "󱊖"
     }
     Tray {

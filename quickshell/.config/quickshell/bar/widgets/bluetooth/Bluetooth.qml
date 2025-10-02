@@ -56,7 +56,6 @@ Item {
         loading: true
 
         BluetoothCtl {
-            anchor.window: root.barWindow
         }
     }
     GlobalShortcut {

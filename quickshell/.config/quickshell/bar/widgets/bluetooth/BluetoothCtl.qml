@@ -5,7 +5,7 @@ import Quickshell.Bluetooth
 import qs.common
 import qs.bar
 
-BarPopup {
+StyledPopup {
     id: root
 
     property BluetoothAdapter adapter: Bluetooth.defaultAdapter

@@ -38,7 +38,7 @@ PanelWindow {
 
         anchors.centerIn: parent
         color: Theme.colors.opaqueBackground(0.9)
-        radius: 8
+        radius: 12
 
         Keys.onPressed: event => {
             if (event.key === Qt.Key_Escape) {

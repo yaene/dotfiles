@@ -41,7 +41,6 @@ Item {
         loading: true
 
         NetworkCtl {
-            anchor.window: root.barWindow
         }
     }
     GlobalShortcut {

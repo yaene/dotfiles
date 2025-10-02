@@ -7,7 +7,7 @@ import qs.services
 import qs.common
 import qs.bar
 
-BarPopup {
+StyledPopup {
     id: root
 
     readonly property bool askPassword: NetworkService.askPassword

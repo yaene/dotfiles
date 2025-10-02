@@ -26,7 +26,7 @@ Item {
 
             color: barItem.hovered ? Theme.colors.background : Theme.colors.text
             text: {
-                NetworkService.ethernet ? "" : !NetworkService.wlan ? "󰤮" : Utils.iconFromWlanSignalStrength(NetworkService.networkStrength);
+                NetworkService.ethernet ? "󰌗" : !NetworkService.wlan ? "󰤮" : Utils.iconFromWlanSignalStrength(NetworkService.networkStrength);
             }
 
             font {

@@ -88,13 +88,13 @@ Scope {
                 BarRight {
                     id: right
 
+                    SysTray {
+                    }
                     Battery {
                     }
                     Bluetooth {
-                        barWindow: barWindow
                     }
                     Network {
-                        barWindow: barWindow
                     }
                 }
             }

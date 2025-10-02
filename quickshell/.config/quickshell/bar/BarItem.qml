@@ -6,7 +6,7 @@ import Quickshell.Widgets
 Item {
     id: barItem
 
-    default property alias content: contentItem.children
+    default property alias content: contentItem.data
     property bool hovered: mouseArea.containsMouse
     property real padding: 6
     property real radius: 8

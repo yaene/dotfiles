@@ -93,8 +93,10 @@ Scope {
                     Battery {
                     }
                     Bluetooth {
+                        barWindow: barWindow
                     }
                     Network {
+                        barWindow: barWindow
                     }
                 }
             }

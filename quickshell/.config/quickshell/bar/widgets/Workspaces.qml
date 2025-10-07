@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
+import Quickshell.Widgets
 import Quickshell
 import Quickshell.Hyprland
 import qs.common
@@ -16,7 +17,7 @@ BarItem {
         Repeater {
             model: workspaceIndicator.workspaces
 
-            Rectangle {
+            WrapperRectangle {
                 id: workspaceBox
 
                 readonly property bool active: {
@@ -31,18 +32,49 @@ BarItem {
 
                 Layout.preferredHeight: Config.bar.height
                 color: focused ? Theme.colors.selected : active ? Theme.colors.active : "transparent"
-                implicitWidth: 20
+                leftMargin: 10
+                rightMargin: 10
                 visible: onCurrentMonitor
 
-                Text {
-                    property HyprlandWorkspace workspace: workspaceBox.modelData
+                Item {
+                    implicitHeight: workspaceLabel.height
+                    implicitWidth: workspaceLabel.width
 
-                    anchors.centerIn: parent
-                    color: workspaceBox.active || hovered ? Theme.colors.background : Theme.colors.text
-                    text: workspace.id
+                    MouseArea {
+                        anchors.fill: workspaceLabel
 
-                    font {
-                        pixelSize: Theme.font.size.medium
+                        onClicked: {
+                            workspaceLabel.workspace.activate();
+                            console.log("clicked");
+                        }
+                    }
+                    RowLayout {
+                        id: workspaceLabel
+
+                        property HyprlandWorkspace workspace: workspaceBox.modelData
+
+                        spacing: 6
+
+                        NerdIcon {
+                            property string activeAppId: {
+                                const activeToplevels = workspaceLabel.workspace.toplevels.values;
+                                return activeToplevels.length > 0 ? activeToplevels[0].wayland.appId : "";
+                            }
+
+                            color: workspaceBox.active || hovered ? Theme.colors.background : Theme.colors.text
+                            size: 25
+                            text: Utils.iconFromAppId(activeAppId)
+                        }
+                        Text {
+                            id: text
+
+                            color: workspaceBox.active || hovered ? Theme.colors.background : Theme.colors.text
+                            text: workspaceLabel.workspace.id
+
+                            font {
+                                pixelSize: Theme.font.size.medium
+                            }
+                        }
                     }
                 }
             }

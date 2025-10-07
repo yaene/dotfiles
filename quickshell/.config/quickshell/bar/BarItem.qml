@@ -49,6 +49,7 @@ Item {
 
         anchors.fill: parent
         hoverEnabled: true
+        propagateComposedEvents: true
 
         onPressed: parent.pressed()
     }

@@ -12,6 +12,16 @@ Singleton {
         }
         return null;
     }
+    function iconFromAppId(appId) {
+        console.log(appId);
+        if (appId === "foot") {
+            return "";
+        } else if (appId === "spotify") {
+            return "";
+        } else {
+            return "󰖯";
+        }
+    }
     function iconFromWlanSignalStrength(signalStrength) {
         return signalStrength >= -60 ? "󰤨" : signalStrength >= -67 ? "󰤥" : signalStrength >= -75 ? "󰤢" : "󰤟";
     }

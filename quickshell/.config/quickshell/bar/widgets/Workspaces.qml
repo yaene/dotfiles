@@ -17,41 +17,39 @@ BarItem {
         Repeater {
             model: workspaceIndicator.workspaces
 
-            WrapperRectangle {
-                id: workspaceBox
+            MouseArea {
+                id: container
 
                 readonly property bool active: {
-                    return modelData.active && onCurrentMonitor;
+                    return workspace.active && onCurrentMonitor;
                 }
                 readonly property bool focused: {
-                    return modelData.focused && onCurrentMonitor;
+                    return workspace.focused && onCurrentMonitor;
                 }
                 required property HyprlandWorkspace modelData
-                readonly property bool onCurrentMonitor: screen.name === modelData.monitor.name
+                readonly property bool onCurrentMonitor: screen.name === workspace.monitor.name
                 readonly property var screen: QsWindow.window?.screen
+                property HyprlandWorkspace workspace: container.modelData
 
                 Layout.preferredHeight: Config.bar.height
-                color: focused ? Theme.colors.selected : active ? Theme.colors.active : "transparent"
-                leftMargin: 10
-                rightMargin: 10
+                Layout.preferredWidth: workspaceBox.width
                 visible: onCurrentMonitor
 
-                Item {
-                    implicitHeight: workspaceLabel.height
-                    implicitWidth: workspaceLabel.width
+                onClicked: {
+                    workspaceLabel.workspace.activate();
+                }
 
-                    MouseArea {
-                        anchors.fill: workspaceLabel
+                WrapperRectangle {
+                    id: workspaceBox
 
-                        onClicked: {
-                            workspaceLabel.workspace.activate();
-                            console.log("clicked");
-                        }
-                    }
+                    color: container.focused ? Theme.colors.selected : container.active ? Theme.colors.active : "transparent"
+                    leftMargin: 10
+                    rightMargin: 10
+
                     RowLayout {
                         id: workspaceLabel
 
-                        property HyprlandWorkspace workspace: workspaceBox.modelData
+                        property HyprlandWorkspace workspace: container.modelData
 
                         spacing: 6
 
@@ -61,14 +59,14 @@ BarItem {
                                 return activeToplevels.length > 0 ? activeToplevels[0].wayland.appId : "";
                             }
 
-                            color: workspaceBox.active || hovered ? Theme.colors.background : Theme.colors.text
+                            color: container.active || hovered ? Theme.colors.background : Theme.colors.text
                             size: 25
                             text: Utils.iconFromAppId(activeAppId)
                         }
                         Text {
                             id: text
 
-                            color: workspaceBox.active || hovered ? Theme.colors.background : Theme.colors.text
+                            color: container.active || hovered ? Theme.colors.background : Theme.colors.text
                             text: workspaceLabel.workspace.id
 
                             font {

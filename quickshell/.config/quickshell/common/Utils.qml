@@ -18,6 +18,10 @@ Singleton {
             return "";
         } else if (appId === "spotify") {
             return "";
+        } else if (appId === "org.qutebrowser.qutebrowser") {
+            return "";
+        } else if (appId === "org.pwmt.zathura") {
+            return "";
         } else {
             return "󰖯";
         }

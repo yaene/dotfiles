@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Parse arguments before and after '--'
 script_args=()

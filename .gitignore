@@ -7,4 +7,6 @@ rofi/.config/rofi/colors.rasi
 spicetify/.config/spicetify/Themes/wallust/color.ini
 nvim/.config/nvim/lua/wallust/colors.lua
 tmux/.tmux/colors.conf
+qutebrowser/.config/qutebrowser/bookmarks
+qutebrowser/.config/qutebrowser/quickmarks
 

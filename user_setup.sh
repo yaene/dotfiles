@@ -6,7 +6,7 @@
 ############################
 ######## Dotfiles ##########
 ############################
-git clone https://github.com/yaene/dotfiles.git 
+git clone https://github.com/yaene/dotfiles.git
 cd dotfiles
 stow tmux nvim zsh hyprland rofi foot fontconfig jing spotify quickshell yazi
 
@@ -44,7 +44,7 @@ git clone https://github.com/vinceliuice/Tela-icon-theme.git
 rm -rf Tela-icon-theme
 
 # install GTK themes
-wget https://github.com/HyDE-Project/hyde-themes/raw/refs/heads/Tokyo-Night/Source/Gtk_TokyoNight.tar.gz 
+wget https://github.com/HyDE-Project/hyde-themes/raw/refs/heads/Tokyo-Night/Source/Gtk_TokyoNight.tar.gz
 mkdir -p ~/.themes
 tar -xvzf Gtk_TokyoNight.tar.gz -C ~/.themes
 rm Gtk_TokyoNight.tar.gz
@@ -82,3 +82,5 @@ systemctl --user --now enable pipewire pipewire-pulse
 echo 'export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh' >> ~/.zprofile
 
 
+# screenshot
+yay -S grimblast-git

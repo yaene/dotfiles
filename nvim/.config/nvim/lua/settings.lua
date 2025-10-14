@@ -21,7 +21,7 @@ o.tabstop = space_for_indent
 o.softtabstop = space_for_indent
 o.expandtab = true
 o.shiftwidth = space_for_indent
-o.autoindent = true
+o.smartindent = true
 o.list = true
 opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 

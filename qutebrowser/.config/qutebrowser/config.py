@@ -8,3 +8,4 @@ c.editor.command = [
     "+startinsert",
     "+call cursor({line}, {column})",
 ]
+c.content.blocking.method = "both"

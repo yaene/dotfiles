@@ -9,4 +9,5 @@ nvim/.config/nvim/lua/wallust/colors.lua
 tmux/.tmux/colors.conf
 qutebrowser/.config/qutebrowser/bookmarks
 qutebrowser/.config/qutebrowser/quickmarks
+mutt/.config/mutt/account.muttrc
 

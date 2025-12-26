@@ -127,6 +127,7 @@ return {
             },
          },
          qmlls = {},
+         marksman = {},
       }
       local ensure_installed = vim.tbl_keys(servers or {})
       -- add other things we want installed besides LSPs

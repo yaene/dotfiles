@@ -5,6 +5,7 @@ local M = {
 
 	foreground = "{{colors.on_surface.default.hex}}",
 	background = "{{colors.background.default.hex}}",
+	surface_container_lowest = "{{colors.surface_container_lowest.default.hex}}",
 	surface_bright = "{{colors.surface_bright.default.hex}}",
 	selection_foreground = "{{colors.on_secondary.default.hex}}",
 	selection_background = "{{colors.secondary_fixed_dim.default.hex}}",

@@ -5,6 +5,7 @@ local M = {
 
 	foreground = "#dee3e7",
 	background = "#0e1417",
+	surface_container_lowest = "#090f12",
 	surface_bright = "#343a3d",
 	selection_foreground = "#003546",
 	selection_background = "#a0cde4",

@@ -10,28 +10,28 @@ return {
       local my_lualine_theme = {
          normal = {
             a = { bg = colors.color1, fg = colors.background, gui = "bold" },
-            b = { bg = colors.surface_bright, fg = colors.foreground },
-            c = { bg = colors.surface_bright, fg = colors.foreground },
+            b = { bg = colors.surface_container_lowest, fg = colors.foreground },
+            c = { bg = colors.surface_container_lowest, fg = colors.foreground },
          },
          insert = {
             a = { bg = colors.color2, fg = colors.background, gui = "bold" },
-            b = { bg = colors.surface_bright, fg = colors.foreground },
-            c = { bg = colors.surface_bright, fg = colors.foreground },
+            b = { bg = colors.surface_container_lowest, fg = colors.foreground },
+            c = { bg = colors.surface_container_lowest, fg = colors.foreground },
          },
          visual = {
             a = { bg = colors.color8, fg = colors.background, gui = "bold" },
-            b = { bg = colors.surface_bright, fg = colors.foreground },
-            c = { bg = colors.surface_bright, fg = colors.foreground },
+            b = { bg = colors.surface_container_lowest, fg = colors.foreground },
+            c = { bg = colors.surface_container_lowest, fg = colors.foreground },
          },
          command = {
             a = { bg = colors.color3, fg = colors.background, gui = "bold" },
-            b = { bg = colors.surface_bright, fg = colors.foreground },
-            c = { bg = colors.surface_bright, fg = colors.foreground },
+            b = { bg = colors.surface_container_lowest, fg = colors.foreground },
+            c = { bg = colors.surface_container_lowest, fg = colors.foreground },
          },
          replace = {
             a = { bg = colors.color13, fg = colors.background, gui = "bold" },
-            b = { bg = colors.surface_bright, fg = colors.foreground },
-            c = { bg = colors.surface_bright, fg = colors.foreground },
+            b = { bg = colors.surface_container_lowest, fg = colors.foreground },
+            c = { bg = colors.surface_container_lowest, fg = colors.foreground },
          },
          inactive = {
             a = { bg = colors.background, fg = colors.background, gui = "bold" },

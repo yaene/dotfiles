@@ -169,3 +169,7 @@ function y() {
 }
 
 export PATH=$PATH:$HOME/.spicetify
+
+if [ -f $HOME/.zshrc_local ]; then
+  source $HOME/.zshrc_local
+fi

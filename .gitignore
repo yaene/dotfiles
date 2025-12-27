@@ -1,8 +1,11 @@
 hyprland/.config/hypr/display-setup.conf
 hyprland/.config/hypr/colors.conf
 yazi/.config/yazi/plugins
-yazi/.config/yazi/flavors
+yazi/.config/yazi/flavors/*
+!yazi/.config/yazi/flavors/matugen.yazi/
+!yazi/.config/yazi/flavors/matugen.yazi/*
 foot/.config/foot/colors.ini
+foot/.config/foot/dank-colors.ini
 rofi/.config/rofi/colors.rasi
 spicetify/.config/spicetify/Themes/wallust/color.ini
 nvim/.config/nvim/lua/wallust/colors.lua
@@ -10,4 +13,5 @@ tmux/.tmux/colors.conf
 qutebrowser/.config/qutebrowser/bookmarks
 qutebrowser/.config/qutebrowser/quickmarks
 mutt/.config/mutt/account.muttrc
+mango/.config/mango/local.conf
 

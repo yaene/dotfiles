@@ -17,3 +17,7 @@ output_path = "~/.config/mango/colors.conf"
 input_path = "~/.config/matugen/templates/nvim.lua"
 output_path = "~/.config/nvim/lua/theme/colors.lua"
 post_hook = "pkill -SIGUSR1 nvim"
+
+[templates.zathura]
+input_path = "~/.config/matugen/templates/colors.zathurarc"
+output_path = "~/.config/zathura/colors.zathurarc"

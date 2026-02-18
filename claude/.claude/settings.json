@@ -1,12 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "model": "claude-sonnet-4-5-20250929",
-  "alwaysThinkingEnabled": true,
   "cleanupPeriodDays": 365,
   "includeCoAuthoredBy": true,
-
   "permissions": {
-    "defaultMode": "acceptEdits",
     "allow": [
       "Read",
       "Glob",
@@ -24,9 +20,13 @@
       "Edit(.git/**)",
       "Bash(git push:*)"
     ],
-    "ask": ["WebFetch", "Bash(curl:*)", "Bash(docker:*)"]
+    "ask": [
+      "WebFetch",
+      "Bash(curl:*)",
+      "Bash(docker:*)"
+    ],
+    "defaultMode": "acceptEdits"
   },
-
   "hooks": {
     "PreToolUse": [
       {
@@ -60,9 +60,12 @@
       }
     ]
   },
-
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
-  }
+  },
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true
 }

@@ -36,8 +36,3 @@ git_str=$(printf '\033[01;36m%s\033[00m | \033[01;32m%s\033[00m | S:\033[01;33m%
   "$repo_name" "$branch" "$staged" "$unstaged" "$untracked")
 
 echo -e "$git_str | $token_str"
-```
-
-Output looks like:
-```
-myrepo | main | S:2 U:1 ?:0 | 45k used / 155k left (22%)

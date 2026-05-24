@@ -1,4 +1,1 @@
-return {
-  "stevearc/dressing.nvim",
-  event = "VeryLazy",
-}
+require("dressing").setup()

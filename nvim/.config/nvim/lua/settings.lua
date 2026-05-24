@@ -40,6 +40,7 @@ o.number = true
 o.relativenumber = true
 o.cc = column_limit
 o.wrap = false
+o.scrolloff = 10
 
 -- search settings
 --

@@ -1,18 +1,5 @@
--- Dependency setups that lazy.nvim previously ran via `opts`/`config = true`.
-require("mason").setup({
-   ui = {
-      icons = {
-         package_installed = "✓",
-         package_pending = "",
-         package_uninstalled = "✗",
-      },
-   },
-})
 require("lazydev").setup({})
 require("lsp-file-operations").setup()
-
--- import mason_lspconfig plugin
-local mason_lspconfig = require("mason-lspconfig")
 
 local keymap = vim.keymap -- for conciseness
 
@@ -61,7 +48,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
       keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
       opts.desc = "Restart LSP"
-      keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+      keymap.set("n", "<leader>rs", function()
+         -- :LspRestart came from nvim-lspconfig's old framework; with
+         -- vim.lsp.enable we stop the buffer's clients and reload to re-attach.
+         for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+            vim.lsp.stop_client(client.id)
+         end
+         vim.defer_fn(function()
+            vim.cmd("edit")
+         end, 200)
+      end, opts) -- mapping to restart lsp if necessary
    end,
 })
 
@@ -93,55 +89,36 @@ vim.diagnostic.config({
       end,
    },
 })
--- used to enable autocompletion (assign to every lsp server config)
--- we are essentially telling the LSPs what our editor can do
+-- Tell the LSPs what our editor can do (autocompletion etc.). Applied to every
+-- server via the "*" wildcard config below.
 local capabilities = require("blink.cmp").get_lsp_capabilities()
-local servers = {
-   html = {},
-   cssls = {},
-   tailwindcss = {},
-   pyright = {},
-   clangd = {},
-   cmake = {},
-   hyprls = {},
-   lua_ls = {
-      settings = {
-         Lua = {
-            completion = {
-               callSnippet = "Replace",
-            },
+vim.lsp.config("*", {
+   capabilities = capabilities,
+})
+
+-- Per-server overrides. The launch config (cmd, filetypes, root detection) for
+-- each name comes from nvim-lspconfig's `lsp/<server>.lua`; we only override here.
+vim.lsp.config("lua_ls", {
+   settings = {
+      Lua = {
+         completion = {
+            callSnippet = "Replace",
          },
       },
    },
-   qmlls = {},
-   marksman = {},
-}
-local ensure_installed = vim.tbl_keys(servers or {})
--- add other things we want installed besides LSPs
-vim.list_extend(ensure_installed, {
-   "prettier",
-   "stylua",
-   "isort",
-   "black",
-   "eslint_d",
-   "clang-format",
-   "cpplint",
-   "cmakelang",
-   "beautysh",
 })
 
-require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
-mason_lspconfig.setup({
-   automatic_installation = false,
-   handlers = {
-      function(server_name)
-         local server = servers[server_name] or {}
-         -- This handles overriding only values explicitly passed
-         -- by the server configuration above. Useful when disabling
-         -- certain features of an LSP (for example, turning off formatting for ts_ls)
-         server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-         require("lspconfig")[server_name].setup(server)
-      end,
-   },
+-- Enable the servers. Their binaries must be on $PATH (install them with your
+-- distro package manager); a server simply won't start if its binary is missing.
+vim.lsp.enable({
+   "html",
+   "cssls",
+   "tailwindcss",
+   "pyright",
+   "clangd",
+   "cmake",
+   "hyprls",
+   "lua_ls",
+   "qmlls",
+   "marksman",
 })

@@ -23,12 +23,14 @@ keymap.set("n", "<leader>faf", function()
    builtin.find_files({ hidden = true })
 end, { desc = "Fuzzy find files in cwd including hidden" })
 keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find open buffers" })
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 keymap.set("n", "<leader>fas", function()
    builtin.live_grep({ additional_args = { "--hidden" } })
 end, { desc = "Find string in cwd including hidden files" })
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Find keymaps" })
 
 -- Telescope theming.
 -- base16-nvim's defaults give telescope invisible borders and a flat grey

@@ -6,7 +6,6 @@
 -- Registered before `vim.pack.add` because the event fires *during* that call.
 local builds = {
    ["telescope-fzf-native.nvim"] = { "make" },
-   ["LuaSnip"] = { "make", "install_jsregexp" },
 }
 
 vim.api.nvim_create_autocmd("PackChanged", {
@@ -38,11 +37,9 @@ vim.pack.add({
    -- shared libraries / icons
    { src = "https://github.com/nvim-lua/plenary.nvim" },
    { src = "https://github.com/yaene/hypr-navigator" },
-   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
    { src = "https://github.com/nvim-mini/mini.icons" },
 
-   -- colorschemes
-   { src = "https://github.com/folke/tokyonight.nvim" },
+   -- colorscheme (driven by matugen via dankcolors.lua)
    { src = "https://github.com/RRethy/base16-nvim" },
 
    -- treesitter
@@ -52,36 +49,29 @@ vim.pack.add({
    { src = "https://github.com/nvim-telescope/telescope.nvim",            version = "master" },
    { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
 
-   -- completion + snippets
-   { src = "https://github.com/saghen/blink.cmp",        version = vim.version.range("1.*") },
-   { src = "https://github.com/L3MON4D3/LuaSnip",        version = vim.version.range("2.*") },
-   { src = "https://github.com/rafamadriz/friendly-snippets" },
+   -- completion
+   { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.*") },
    { src = "https://github.com/folke/lazydev.nvim" },
 
    -- lsp + tooling
    { src = "https://github.com/neovim/nvim-lspconfig" },
-   { src = "https://github.com/antosha417/nvim-lsp-file-operations" },
 
    -- formatting / linting
    { src = "https://github.com/stevearc/conform.nvim" },
    { src = "https://github.com/mfussenegger/nvim-lint" },
 
    -- editing & ui
+   { src = "https://github.com/nvim-mini/mini.pairs" },
    { src = "https://github.com/kylechui/nvim-surround" },
    { src = "https://github.com/lewis6991/gitsigns.nvim" },
    { src = "https://github.com/folke/todo-comments.nvim" },
-   { src = "https://github.com/folke/trouble.nvim" },
-   { src = "https://github.com/folke/which-key.nvim" },
-   { src = "https://github.com/stevearc/dressing.nvim" },
-   { src = "https://github.com/rmagatti/auto-session" },
    { src = "https://github.com/mikavilpas/yazi.nvim" },
-   { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 })
 
 -- Load each plugin's configuration. Order matters where one setup depends on
 -- another (e.g. todo-comments before trouble/telescope, blink before lsp).
 local configs = {
-   "plugins.tokyonight",
+   "plugins.icons",
    "plugins.dankcolors",
    "plugins.treesitter",
    "plugins.blink-cmp",
@@ -91,13 +81,9 @@ local configs = {
    "plugins.gitsigns",
    "plugins.formatter",
    "plugins.linting",
+   "plugins.pairs",
    "plugins.surround",
-   "plugins.trouble",
-   "plugins.which-key",
-   "plugins.dressing",
-   "plugins.auto-session",
    "plugins.yazi",
-   "plugins.render-markdown",
 }
 
 for _, mod in ipairs(configs) do

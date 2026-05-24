@@ -1,6 +1,3 @@
--- friendly-snippets: load the vscode-style snippet collection into LuaSnip
-require("luasnip.loaders.from_vscode").lazy_load()
-
 --- @module 'blink.cmp'
 --- @type blink.cmp.Config
 require("blink.cmp").setup({
@@ -28,7 +25,7 @@ require("blink.cmp").setup({
       },
    },
 
-   snippets = { preset = "luasnip" },
+   snippets = { preset = "default" },
 
    -- Use the Lua fuzzy matcher to avoid downloading the prebuilt rust binary.
    fuzzy = { implementation = "lua" },

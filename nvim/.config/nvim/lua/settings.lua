@@ -35,6 +35,10 @@ o.termguicolors = true
 o.splitright = true
 o.splitbelow = true
 
+-- mapping timeout (previously set by which-key)
+o.timeout = true
+o.timeoutlen = 500
+
 -- linenumbers and column
 o.number = true
 o.relativenumber = true

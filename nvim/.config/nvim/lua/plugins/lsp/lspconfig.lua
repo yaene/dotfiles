@@ -1,5 +1,4 @@
 require("lazydev").setup({})
-require("lsp-file-operations").setup()
 
 local keymap = vim.keymap -- for conciseness
 

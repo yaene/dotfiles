@@ -38,13 +38,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
       keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
       opts.desc = "Go to previous diagnostic"
-      keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+      keymap.set("n", "[d", function()
+         vim.diagnostic.jump({ count = -1, float = true })
+      end, opts) -- jump to previous diagnostic in buffer
 
       opts.desc = "Go to next diagnostic"
-      keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+      keymap.set("n", "]d", function()
+         vim.diagnostic.jump({ count = 1, float = true })
+      end, opts) -- jump to next diagnostic in buffer
 
       opts.desc = "Show documentation for what is under cursor"
       keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+
+      -- inlay hints, for servers that support them (e.g. clangd)
+      local client = vim.lsp.get_client_by_id(ev.data.client_id)
+      if client and client:supports_method("textDocument/inlayHint") then
+         vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+         opts.desc = "Toggle inlay hints"
+         keymap.set("n", "<leader>th", function()
+            local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = ev.buf })
+            vim.lsp.inlay_hint.enable(not enabled, { bufnr = ev.buf })
+         end, opts)
+      end
 
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", function()

@@ -43,7 +43,8 @@ vim.pack.add({
    { src = "https://github.com/RRethy/base16-nvim" },
 
    -- treesitter
-   { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+   { src = "https://github.com/nvim-treesitter/nvim-treesitter",             version = "main" },
+   { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", version = "main" },
 
    -- fuzzy finder
    { src = "https://github.com/nvim-telescope/telescope.nvim",            version = "master" },
@@ -62,7 +63,7 @@ vim.pack.add({
 
    -- editing & ui
    { src = "https://github.com/nvim-mini/mini.pairs" },
-   { src = "https://github.com/kylechui/nvim-surround" },
+   { src = "https://github.com/nvim-mini/mini.surround" },
    { src = "https://github.com/lewis6991/gitsigns.nvim" },
    { src = "https://github.com/folke/todo-comments.nvim" },
    { src = "https://github.com/mikavilpas/yazi.nvim" },
@@ -74,6 +75,7 @@ local configs = {
    "plugins.icons",
    "plugins.dankcolors",
    "plugins.treesitter",
+   "plugins.treesitter-textobjects",
    "plugins.blink-cmp",
    "plugins.todo-comments",
    "plugins.telescope",

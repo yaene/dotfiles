@@ -30,6 +30,9 @@ opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 o.ttyfast = true
 o.termguicolors = true
 
+-- persistent undo (survives closing/reopening files)
+o.undofile = true
+
 -- window settings
 --
 o.splitright = true

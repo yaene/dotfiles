@@ -39,9 +39,9 @@ vim.keymap.set({ "n", "x", "o" }, "[[", function()
 end, { desc = "Prev class start" })
 
 -- Swap the parameter/argument under the cursor with the next/previous one.
-vim.keymap.set("n", "<leader>sa", function()
+vim.keymap.set("n", "<leader>san", function()
    swap.swap_next("@parameter.inner", "textobjects")
 end, { desc = "Swap parameter with next" })
-vim.keymap.set("n", "<leader>sA", function()
+vim.keymap.set("n", "<leader>sap", function()
    swap.swap_previous("@parameter.inner", "textobjects")
 end, { desc = "Swap parameter with previous" })

@@ -73,7 +73,7 @@ vim.pack.add({
 -- another (e.g. todo-comments before trouble/telescope, blink before lsp).
 local configs = {
    "plugins.icons",
-   "plugins.dankcolors",
+   "plugins.colorscheme",
    "plugins.treesitter",
    "plugins.treesitter-textobjects",
    "plugins.blink-cmp",

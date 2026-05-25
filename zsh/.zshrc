@@ -131,6 +131,12 @@ bindkey -v
 # snappy ESC in vi-mode (default waits ~0.4s); mirrors tmux escape-time
 export KEYTIMEOUT=1
 
+# edit the current command line in $EDITOR (nvim) with ^O.
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^O' edit-command-line           # insert mode
+bindkey -M vicmd '^O' edit-command-line  # vi command mode
+
 # PATH (typeset -U keeps it deduped across nested interactive shells)
 typeset -U path
 export PATH="$HOME/.local/bin:$PATH"

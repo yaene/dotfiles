@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 vim.pack.add({
    -- shared libraries / icons
    { src = "https://github.com/nvim-lua/plenary.nvim" },
-   { src = "https://github.com/yaene/hypr-navigator" },
+   { src = "https://github.com/christoomey/vim-tmux-navigator" },
    { src = "https://github.com/nvim-mini/mini.icons" },
 
    -- colorscheme (driven by matugen via dankcolors.lua)

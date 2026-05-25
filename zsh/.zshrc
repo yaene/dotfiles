@@ -70,7 +70,9 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting fzf)
+# NOTE: zsh-syntax-highlighting must be sourced last (after every other
+# widget-defining plugin, e.g. fzf), so keep it at the end of this list.
+plugins=(git fzf zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,12 +92,8 @@ done
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vi'
-else
-  export EDITOR='nvim'
-fi
+# EDITOR is exported from ~/.zprofile so non-interactive tools (git, sudo -e,
+# cron) inherit it too
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
@@ -130,17 +128,17 @@ prompt pure
 
 # vim keybindings
 bindkey -v
+# snappy ESC in vi-mode (default waits ~0.4s); mirrors tmux escape-time
+export KEYTIMEOUT=1
 
-# PATH
+# PATH (typeset -U keeps it deduped across nested interactive shells)
+typeset -U path
 export PATH="$HOME/.local/bin:$PATH"
-
-### Aliases ###
-alias dnf="dnf5"
 
 # TMUX
 alias t="tmux"
 alias tn="tmux new-session -A -s"
-alias tncd="tmux new-session -A -s $(basename $PWD | tr -d .)"
+tncd() { tmux new-session -A -s "$(basename "$PWD" | tr -d .)"; }
 alias ta="tmux attach"
 alias tas="tmux attach -t"
 alias tl="(tmux list-sessions -F '#{session_name}' 2>/dev/null || echo 'no sessions')"
@@ -151,13 +149,6 @@ taf () {
     tas $session
   fi
 }
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-eval "$(zoxide init zsh)"
-alias cd="z"
 
 # yazi move to directory on exit
 function y() {
@@ -173,3 +164,9 @@ export PATH=$PATH:$HOME/.spicetify
 if [ -f $HOME/.zshrc_local ]; then
   source $HOME/.zshrc_local
 fi
+
+# zoxide — kept at the very end of the file (it hooks precmd/chpwd, and the
+# doctor warns if anything reinitialises those after it). --cmd cd replaces
+# `cd` with zoxide while preserving normal cd semantics (`cd -`, `cd ~`,
+# no-arg); use `cdi` for the interactive picker.
+eval "$(zoxide init zsh --cmd cd)"

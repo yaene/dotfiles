@@ -64,6 +64,7 @@ vim.pack.add({
    -- editing & ui
    { src = "https://github.com/nvim-mini/mini.pairs" },
    { src = "https://github.com/nvim-mini/mini.surround" },
+   { src = "https://github.com/nvim-mini/mini.statusline" },
    { src = "https://github.com/lewis6991/gitsigns.nvim" },
    { src = "https://github.com/folke/todo-comments.nvim" },
    { src = "https://github.com/mikavilpas/yazi.nvim" },
@@ -85,6 +86,7 @@ local configs = {
    "plugins.linting",
    "plugins.pairs",
    "plugins.surround",
+   "plugins.statusline",
    "plugins.yazi",
 }
 

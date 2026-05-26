@@ -92,6 +92,11 @@ alias gsta='git stash'
 alias gstp='git stash pop'
 
 ### ls aliases ###
+# colorize ls (GNU coreutils only colors with --color). zsh re-expands the `ls`
+# inside the aliases below, so this flows into ll/la/l/lsa too.
+alias ls='ls --color=auto'
+# richer palette for ls + completion menus (falls back to ls's built-in colors)
+command -v dircolors >/dev/null && eval "$(dircolors -b)"
 alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'

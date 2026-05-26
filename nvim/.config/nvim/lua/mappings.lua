@@ -11,6 +11,9 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buf in
 keymap.set("n", "<leader>o", "<cmd>update<CR> <cmd>source<CR>", { desc = "Source current buffer" })
 keymap.set("n", "<leader>cx", "<cmd>! chmod +x %<CR>", { desc = "Make executable" })
 
+keymap.set("n", "<leader>qo", "<cmd>copen<CR>")
+keymap.set("n", "<leader>qc", "<cmd>cclose<CR>")
+
 vim.api.nvim_create_autocmd("TextYankPost", {
    desc = "Highlight when yanking text",
    group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),

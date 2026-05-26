@@ -43,11 +43,11 @@ vim.pack.add({
    { src = "https://github.com/RRethy/base16-nvim" },
 
    -- treesitter
-   { src = "https://github.com/nvim-treesitter/nvim-treesitter",             version = "main" },
+   { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
    { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", version = "main" },
 
    -- fuzzy finder
-   { src = "https://github.com/nvim-telescope/telescope.nvim",            version = "master" },
+   { src = "https://github.com/nvim-telescope/telescope.nvim", version = "master" },
    { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
 
    -- completion

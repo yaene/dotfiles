@@ -90,6 +90,11 @@ alias grh='git reset'
 alias grhh='git reset --hard'
 alias gsta='git stash'
 alias gstp='git stash pop'
+alias gpr='git pull --rebase'
+alias gca='git commit --all'
+alias 'gca!'='git commit --all --amend'
+alias 'gcan!'='git commit --all --amend --no-edit'
+alias grbi='git rebase --interactive'
 
 ### ls aliases ###
 # colorize ls (GNU coreutils only colors with --color). zsh re-expands the `ls`

@@ -54,6 +54,9 @@ bindkey -M vicmd '^O' edit-command-line  # vi command mode
 typeset -U path
 export PATH="$HOME/.local/bin:$PATH"
 
+# Basic ENV
+export EDITOR=nvim
+
 ### Git aliases 
 # helpers referenced by a couple of the aliases below
 git_current_branch() { git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null; }

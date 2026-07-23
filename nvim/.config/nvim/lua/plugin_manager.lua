@@ -67,7 +67,7 @@ vim.pack.add({
    { src = "https://github.com/nvim-mini/mini.statusline" },
    { src = "https://github.com/lewis6991/gitsigns.nvim" },
    { src = "https://github.com/folke/todo-comments.nvim" },
-   { src = "https://github.com/mikavilpas/yazi.nvim" },
+   { src = "https://github.com/stevearc/oil.nvim" },
 })
 
 -- Load each plugin's configuration. Order matters where one setup depends on
@@ -87,7 +87,7 @@ local configs = {
    "plugins.pairs",
    "plugins.surround",
    "plugins.statusline",
-   "plugins.yazi",
+   "plugins.oil",
 }
 
 for _, mod in ipairs(configs) do

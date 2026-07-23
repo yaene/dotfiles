@@ -110,7 +110,7 @@ alias lsa='ls -lah'
 # TMUX
 alias t="tmux"
 alias tn="tmux new-session -A -s"
-tncd() { tmux new-session -A -s "$(basename "$PWD" | tr -d .)"; }
+alias tncd="tmux new-session -A -s $(basename $PWD | tr -d .)"
 alias ta="tmux attach"
 alias tas="tmux attach -t"
 alias tl="(tmux list-sessions -F '#{session_name}' 2>/dev/null || echo 'no sessions')"
@@ -131,6 +131,23 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# ---------- nnn ----------
+export NNN_OPTS="deEHQx"          # detail, $EDITOR, hidden, no quit prompt, X clipboard
+                                  # type-to-nav is opt-in: `/` for one-shot, ^N to latch it on
+export NNN_BMS="h:$HOME;d:$HOME/Downloads;c:$HOME/.config;t:$HOME/dotfiles"
+export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;m:nmount;v:imgview;x:togglex;g:!git log --oneline*'
+export NNN_FIFO=/tmp/nnn.fifo     # required by preview-tui
+export NNN_COLORS="#04020301"     # per-context colors
+export NNN_TRASH=0                # 0 = permanent rm, 1 = trash-cli, 2 = gio trash
+
+# nnn: cd on quit (use `n`, quit with `q`)
+n() {
+	[ "${NNNLVL:-0}" -eq 0 ] || { echo "nnn is already running"; return; }
+	export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+	command nnn -a "$@"
+	[ -f "$NNN_TMPFILE" ] && { . "$NNN_TMPFILE"; rm -f -- "$NNN_TMPFILE"; }
+}
+
 if [ -f $HOME/.zshrc_local ]; then
   source $HOME/.zshrc_local
 fi
@@ -145,3 +162,5 @@ fi
 # `cd` with zoxide while preserving normal cd semantics (`cd -`, `cd ~`,
 # no-arg); use `cdi` for the interactive picker.
 eval "$(zoxide init zsh --cmd cd)"
+
+

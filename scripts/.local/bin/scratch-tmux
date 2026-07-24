@@ -1,0 +1,45 @@
+#!/usr/bin/zsh
+# scratch-tmux — open/attach a "scratch-N" tmux session.
+#
+# Behavior:
+#   - If an unattached scratch-N session exists, attach to the lowest-numbered one.
+#   - Otherwise, create a new session using the lowest free number.
+#
+# Meant to be run inside a terminal (e.g. mango's alt+enter shortcut).
+
+set -euo pipefail
+
+# Collect existing scratch-N sessions and their attached state.
+# Each line is "<number> <attached-count>", sorted numerically.
+raw=$(tmux list-sessions -F '#{session_name} #{session_attached}' 2>/dev/null \
+    | sed -n 's/^scratch-\([0-9][0-9]*\) \([0-9][0-9]*\)$/\1 \2/p' \
+    | sort -n || true)
+
+used_numbers=()
+first_unattached=""
+
+if [[ -n "$raw" ]]; then
+    for line in "${(@f)raw}"; do
+        num="${line%% *}"
+        attached="${line##* }"
+        used_numbers+=("$num")
+        if [[ "$attached" == "0" && -z "$first_unattached" ]]; then
+            first_unattached="$num"
+        fi
+    done
+fi
+
+# Attach to the lowest-numbered unattached scratch session if one exists.
+if [[ -n "$first_unattached" ]]; then
+    exec tmux attach-session -t "scratch-$first_unattached"
+fi
+
+# Otherwise find the lowest free number (starting at 1) and create it.
+n=1
+for num in "${used_numbers[@]}"; do
+    if [[ "$num" == "$n" ]]; then
+        n=$((n + 1))
+    fi
+done
+
+exec tmux new-session -s "scratch-$n"

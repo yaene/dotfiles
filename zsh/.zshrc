@@ -101,6 +101,9 @@ alias gca='git commit --all'
 alias 'gca!'='git commit --all --amend'
 alias 'gcan!'='git commit --all --amend --no-edit'
 alias grbi='git rebase --interactive'
+alias gsw='git switch'
+alias gswc='git switch -c'
+alias gpf='git push --force'
 
 ### ls aliases ###
 # colorize ls (GNU coreutils only colors with --color). zsh re-expands the `ls`

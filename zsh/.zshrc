@@ -54,8 +54,11 @@ bindkey -M vicmd '^O' edit-command-line  # vi command mode
 typeset -U path
 export PATH="$HOME/.local/bin:$PATH"
 
-# Basic ENV
+### Basic ENV
 export EDITOR=nvim
+
+### Keybinds
+bindkey ' ' magic-space
 
 ### Git aliases 
 # helpers referenced by a couple of the aliases below

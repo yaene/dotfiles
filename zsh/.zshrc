@@ -98,12 +98,16 @@ alias gsta='git stash'
 alias gstp='git stash pop'
 alias gpr='git pull --rebase'
 alias gca='git commit --all'
+alias 'gc!'='git commit --amend'
+alias 'gcn!'='git commit --amend --no-edit'
 alias 'gca!'='git commit --all --amend'
 alias 'gcan!'='git commit --all --amend --no-edit'
 alias grbi='git rebase --interactive'
 alias gsw='git switch'
 alias gswc='git switch -c'
 alias gpf='git push --force'
+alias grs='git restore'
+alias grss='git restore --staged'
 
 ### ls aliases ###
 # colorize ls (GNU coreutils only colors with --color). zsh re-expands the `ls`
@@ -144,7 +148,7 @@ function y() {
 export NNN_OPTS="deEHQx"          # detail, $EDITOR, hidden, no quit prompt, X clipboard
                                   # type-to-nav is opt-in: `/` for one-shot, ^N to latch it on
 export NNN_BMS="h:$HOME;d:$HOME/Downloads;c:$HOME/.config;t:$HOME/dotfiles"
-export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;m:nmount;v:imgview;x:togglex;g:!git log --oneline*'
+export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;m:nmount;v:imgview;x:togglex;g:!git log --oneline*;z:autojump'
 export NNN_FIFO=/tmp/nnn.fifo     # required by preview-tui
 export NNN_COLORS="#04020301"     # per-context colors
 export NNN_TRASH=0                # 0 = permanent rm, 1 = trash-cli, 2 = gio trash
